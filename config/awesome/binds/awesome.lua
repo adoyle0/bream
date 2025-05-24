@@ -9,7 +9,7 @@ globalkeys = Gears.table.join(
   }),
 
   Awful.key({ Modkey, 'Shift' }, 'p', function()
-    Awful.spawn.easy_async_with_shell('bream setwal', function()
+    Awful.spawn.easy_async_with_shell('bream setbg', function()
       awesome.restart()
     end)
   end, {
