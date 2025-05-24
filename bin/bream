@@ -24,11 +24,21 @@ install() {
 wipe_old_files() {
     echo "Cleaning up old install files..."
 
-    rm -rfv "$HOME"/*~
-    rm -rfv "$HOME"/.config/*~
-    rm -rfv "$HOME"/.doors
-    rm -rfv "$HOME"/.profile
-    rm -rfv "$HOME"/.local/bin
+    rm -rfv "$HOME"/*~ \
+        "$HOME"/.config/*~ \
+        "$HOME"/.config/android \
+        "$HOME"/.config/gnupg \
+        "$HOME"/.config/gtk-2.0 \
+        "$HOME"/.config/shell \
+        "$HOME"/.doors \
+        "$HOME"/.local/bin \
+        "$HOME"/.local/share/cargo \
+        "$HOME"/.local/share/go \
+        "$HOME"/.local/share/history \
+        "$HOME"/.local/share/kodi \
+        "$HOME"/.local/share/password-store \
+        "$HOME"/.profile \
+        || exit 1
 
     echo "Done"
 
