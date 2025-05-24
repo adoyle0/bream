@@ -34,6 +34,7 @@ return {
       formatters_by_ft = {
         bash = { 'shellharden', 'beautysh' },
         css = { 'prettierd', 'prettier', stop_after_first = true },
+        fish = { 'fish_indent' },
         html = { 'htmlbeautifier' },
         javascript = { 'prettierd', 'prettier', stop_after_first = true },
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
