@@ -11,6 +11,7 @@ Options:
  mirrors     Rates available mirrors and saves a sorted list
  screenshot  Display a menu with screenshot options
  setbg       Picks a random image from ~/Pictures/Wallpapers and generates color schemes based on it
+ uninstall   Uninstalls bream
  update      Updates bream
 
 https://bream.doordesk.net
@@ -89,6 +90,12 @@ mirrors() {
     esac
 }
 
+uninstall() {
+    sudo rm -rf /usr/bin/bream
+
+    # TODO: create a manifest or something to feed to rm for files in $HOME
+}
+
 main() {
     while [[ $# -gt 0 ]]; do
         case $1 in
@@ -106,6 +113,10 @@ main() {
                 ;;
             mirrors)
                 mirrors
+                break
+                ;;
+            uninstall)
+                uninstall
                 break
                 ;;
             screenshot)
