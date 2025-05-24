@@ -28,11 +28,7 @@ wipe_old_files() {
     rm -rfv "$HOME"/.config/*~
     rm -rfv "$HOME"/.doors
     rm -rfv "$HOME"/.profile
-    rm -rfv "$HOME"/.local/bin/*~
-    rm -rfv "$HOME"/.local/bin/doors*
-    rm -rfv "$HOME"/.local/bin/maimpick
-    rm -rfv "$HOME"/.local/bin/mirrors
-    rm -rfv "$HOME"/.local/bin/n
+    rm -rfv "$HOME"/.local/bin
 
     echo "Done"
 

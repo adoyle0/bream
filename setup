@@ -11,7 +11,7 @@ _88o,,od8P888b "88bo,888oo,__ 888   888,888 Y88" 888o
 -----------------------------------------------------
 EOF
 
-bin_dir="$HOME"/.local/bin
+bin_dir=/usr/bin
 config_dir="$HOME"/.config
 cache_dir="$HOME"/.cache/bream
 git_url=https://git.doordesk.net/adam/bream.git
@@ -209,7 +209,7 @@ install_bin() {
     [ ! -d "$bin_dir" ] && { mkdir -p "$bin_dir" || return 1; }
 
     cd "$cache_dir" &&
-    cp -r --update=all bin/* "$bin_dir" || return 1
+    sudo cp -r --update=all bin/* "$bin_dir" || return 1
 
     return 0
 }
