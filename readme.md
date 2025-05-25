@@ -36,6 +36,7 @@ The meat and potatoes
 | [glow](https://github.com/charmbracelet/glow)                        | Command-line markdown renderer                                                                                           |
 | [leptosfmt](https://github.com/bram209/leptosfmt)                    | Formatter for [leptos](https://github.com/leptos-rs/leptos). This has to be included here or it breaks the neovim config |
 | [man-db](https://man-db.nongnu.org/)                                 | To RTFM                                                                                                                  |
+| [mold](https://github.com/rui314/mold)                               | A much faster linker                                                                                                     |
 | [mosh](https://mosh.org/)                                            | MObile SHell, like ssh but better with a bad connection                                                                  |
 | [neovim](https://github.com/neovim/neovim)                           | Edit text blazingly fast (even over ssh!)                                                                                |
 | [nnn](https://github.com/jarun/nnn)                                  | Lightning fast file manager                                                                                              |

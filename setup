@@ -55,6 +55,7 @@ install_base_arch() {
         go \
         man-db \
         man-pages \
+        mold \
         mosh \
         neovim \
         nnn \
