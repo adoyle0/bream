@@ -10,6 +10,7 @@ abbr gb "git branch"
 abbr gc --set-cursor 'git commit -m "%"'
 abbr gco "git checkout"
 abbr gp "git push"
+abbr gpl "git pull"
 abbr gs "git status"
 
 # Add verbosity
