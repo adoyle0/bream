@@ -1,3 +1,14 @@
+# source /etc/profile with bash
+if status is-login
+    if not set -q __sourced_profile
+        set -x __sourced_profile 1
+        exec bash -c "\
+            test -e /etc/profile && source /etc/profile
+            exec fish --login
+        "
+    end
+end
+
 # Use vi bindings
 fish_vi_key_bindings
 
