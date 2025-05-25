@@ -1,33 +1,3 @@
-# source /etc/profile with bash
-if status is-login
-    if not set -q __sourced_profile
-        set -x __sourced_profile 1
-        exec bash -c "\
-            test -e /etc/profile && source /etc/profile
-            exec fish --login
-        "
-    end
-end
-
-# Use vi bindings
-fish_vi_key_bindings
-
-# Disable default greeting message
-set -U fish_greeting
-
-# Default programs
-set -gx BROWSER librewolf
-set -gx EDITOR nvim
-set -gx VISUAL nvim
-set -gx PAGER "bat -p"
-set -gx TERMINAL alacritty
-
-# Make fzf easier on the eyes
-set FZF_DEFAULT_OPTS "--layout=reverse --height 40%"
-
-# tell xz to use all threads
-set XZ_DEFAULTS "-T 0"
-
 # Shortcut abbreviations
 abbr bb byobu
 abbr dicheck "rsync -havn . /dev/shm --exclude-from .dockerignore"
@@ -55,7 +25,37 @@ abbr cp "cp -iv"
 abbr mv "mv -iv"
 abbr rm "rm -vI"
 
-# Start X at login
-if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-    exec startx -- -keeptty
+if status is-login
+    # source /etc/profile with bash
+    if not set -q __sourced_profile
+        set -x __sourced_profile 1
+        exec bash -c "\
+            test -e /etc/profile && source /etc/profile
+            exec fish --login
+        "
+    end
+
+    # Use vi bindings
+    fish_vi_key_bindings
+
+    # Disable default greeting message
+    set -U fish_greeting
+
+    # Default programs
+    set -gx BROWSER librewolf
+    set -gx EDITOR nvim
+    set -gx VISUAL nvim
+    set -gx PAGER "bat -p"
+    set -gx TERMINAL alacritty
+
+    # Make fzf easier on the eyes
+    set -gx FZF_DEFAULT_OPTS "--layout=reverse --height 40%"
+
+    # tell xz to use all threads
+    set -gx XZ_DEFAULTS "-T 0"
+
+    # Start X at login
+    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+        exec startx -- -keeptty
+    end
 end
