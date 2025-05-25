@@ -1,32 +1,50 @@
-# Shortcut abbreviations
-abbr bb byobu
+# Docker
 abbr dicheck "rsync -havn . /dev/shm --exclude-from .dockerignore"
 abbr drm "docker rm -vf (docker ps -aq)"
 abbr drmi "docker rmi -f (docker images -aq)"
 abbr drmv "docker volume rm (docker volume ls -q)"
-abbr glow "clear && glow"
-abbr jf "sudo journalctl -f"
-abbr ka killall
-abbr mkd "mkdir -pv"
-abbr n "NNN_TERMINAL='alacritty' NNN_FIFO=/tmp/nnn.fifo NNN_PLUG='f:preview-tui' nnn -P f"
-abbr orphans "paru -Qdtq | yay -Rns -"
-abbr packages "paru -Qqe"
-abbr push "rsync -avzP"
-abbr t "tree -L"
-abbr v "nvim ."
-abbr vd deactivate
-abbr vim nvim
-abbr vimdiff "nvim -d"
-abbr vs "source bin/activate"
-abbr x exit
 
-# # Add verbosity
+# Git stuff
+abbr ga "git add"
+abbr gb "git branch"
+abbr gc --set-cursor 'git commit -m "%"'
+abbr gco "git checkout"
+abbr gp "git push"
+abbr gs "git status"
+
+# Add verbosity
 abbr cp "cp -iv"
 abbr mv "mv -iv"
 abbr rm "rm -vI"
 
+# Admin/system stuff
+abbr jf "sudo journalctl -f"
+abbr orphans "paru -Qdtq | yay -Rns -"
+abbr packages "paru -Qqe"
+abbr push "rsync -avzP"
+
+# Python/virtualenv
+abbr vd deactivate
+abbr vs "source bin/activate"
+
+# Vim
+abbr v "nvim ."
+abbr vim nvim
+abbr vimdiff "nvim -d"
+
+# launch nnn with plugins
+abbr n "NNN_TERMINAL='alacritty' NNN_FIFO=/tmp/nnn.fifo NNN_PLUG='f:preview-tui' nnn -P f"
+
+# Laziness/unsorted
+abbr bb byobu
+abbr glow "clear && glow"
+abbr ka killall
+abbr mkd "mkdir -pv"
+abbr t "tree -L"
+abbr x exit
+
 if status is-login
-    # source /etc/profile with bash
+    # Source /etc/profile with bash
     if not set -q __sourced_profile
         set -x __sourced_profile 1
         exec bash -c "\
@@ -34,6 +52,9 @@ if status is-login
             exec fish --login
         "
     end
+
+    # Add cargo bin to path
+    fish_add_path ~/.cargo/bin/
 
     # Use vi bindings
     fish_vi_key_bindings
