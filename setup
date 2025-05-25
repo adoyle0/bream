@@ -250,7 +250,7 @@ prepare() {
     ensure_paru &&
 
     # Rank mirrors for SPEED
-    paru -S --needed rate-mirrors-bin &&
+    paru -S --needed --no-confirm rate-mirrors-bin &&
     install_bin &&
     bream mirrors || return 1
 
