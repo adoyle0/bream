@@ -62,7 +62,6 @@ install_base_arch() {
         npm \
         pacman-contrib \
         pkgfile \
-        rate-mirrors-bin \
         ripgrep \
         rsync \
         rubygems \
@@ -112,10 +111,10 @@ init_pywalfox() {
 
 init_wallpaper() {
     # Copy default wallpaper if it doesn't exist
-    if ! test -f "$HOME"/Pictures/Wallpapers/door2.jpg; then
+    if ! test -f "$HOME"/Pictures/Wallpapers/bream.jpg; then
         if ! test -d "$HOME"/Pictures/Wallpapers; then
             mkdir -p "$HOME"/Pictures/Wallpapers &&
-            curl -so "$HOME"/Pictures/Wallpapers/door2.jpg https://old.doordesk.net/door2.jpg || return 1
+            curl -so "$HOME"/Pictures/Wallpapers/bream.jpg https://old.doordesk.net/bream.jpg || return 1
         fi
     fi
 
@@ -230,12 +229,16 @@ cleanup() {
 }
 
 prepare() {
-    # Everything is better with color
+    # Enable pacman colors
     sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
+
+    # Enable multi-threading for xz
+    export XZ_DEFAULTS="-T 0" &&
 
     # grab mold here for linking any rust builds during the rest of the install
     sudo pacman -S --needed --noconfirm git base-devel mold &&
 
+    # Sync files
     if [ "$local_repo" ]; then
         cp -r . "$cache_dir"
     else
@@ -244,7 +247,12 @@ prepare() {
 
     # Copy home files because it includes things like mold for rustc and some gpg keyservers
     install_home &&
-    ensure_paru || return 1
+    ensure_paru &&
+
+    # Rank mirrors for SPEED
+    paru -S --needed rate-mirrors-bin &&
+    install_bin &&
+    bream mirrors || return 1
 
     return 0
 }
@@ -270,7 +278,6 @@ setup_arch() {
     fi &&
 
     init_nnn_plugins &&
-    install_bin &&
     install_configs &&
     install_shell &&
 
