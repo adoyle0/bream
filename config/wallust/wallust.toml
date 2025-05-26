@@ -1,14 +1,3 @@
-# wallust v3.3
-#
-# You can copy this file to ~/.config/wallust/wallust.toml (keep in mind is a sample config)
-
-# SIMPLE TUTORIAL, or `man wallust.5`:
-# https://explosion-mental.codeberg.page/wallust/
-#
-# If comming from v2: https://explosion-mental.codeberg.page/wallust/v3.html#wallusttoml
-
-# Global section - values below can be overwritten by command line flags
-
 # How the image is parse, in order to get the colors:
 # full - resized - wal - thumb -  fastresize - kmeans
 backend = "fastresize"
@@ -38,7 +27,7 @@ check_contrast = true
 # threshold = 20
 
 # Alpha value for templating, by default 100 (no other use whatsoever)
-alpha = 100
+# alpha = 100
 
 [templates]
 colors = { src = "colors", dst = "~/.cache/wal/colors" }
