@@ -58,7 +58,6 @@ install_base_arch() {
         mold \
         mosh \
         neovim \
-        nnn \
         npm \
         pacman-contrib \
         pkgfile \
@@ -176,12 +175,6 @@ install_extras_arch() {
     return 0
 }
 
-init_nnn_plugins() {
-    sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)" || return 1
-
-    return 0
-}
-
 install_shell() {
     if ! [ "$SHELL" = "/bin/fish" ]; then
         sudo chsh -s /bin/fish "$USER" &&
@@ -277,7 +270,6 @@ setup_arch() {
         install_extras_arch || return 1
     fi &&
 
-    init_nnn_plugins &&
     install_configs &&
     install_shell &&
 

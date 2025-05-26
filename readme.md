@@ -39,7 +39,6 @@ The meat and potatoes
 | [mold](https://github.com/rui314/mold)                               | A much faster linker                                                                                                     |
 | [mosh](https://mosh.org/)                                            | MObile SHell, like ssh but better with a bad connection                                                                  |
 | [neovim](https://github.com/neovim/neovim)                           | Edit text blazingly fast (even over ssh!)                                                                                |
-| [nnn](https://github.com/jarun/nnn)                                  | Lightning fast file manager                                                                                              |
 | [npm](https://www.npmjs.com/)                                        | Used by neovim/mason                                                                                                     |
 | [pacman-contrib](https://gitlab.archlinux.org/pacman/pacman-contrib) | Handy scripts for system maintenance                                                                                     |
 | [paru](https://github.com/Morganamilo/paru)                          | Easier to use Arch package manager that supports AUR                                                                     |
@@ -54,6 +53,7 @@ The meat and potatoes
 | [unrar](https://www.rarlab.com/rar_add.htm)                          | For extracting rar archives                                                                                              |
 | [unzip](http://infozip.sourceforge.net/UnZip.html)                   | For extracting zip archives                                                                                              |
 | [wget](https://www.gnu.org/software/wget/wget.html)                  | Tool to get things from the web                                                                                          |
+| [yazi](https://github.com/sxyazi/yazi)                               | Lightning fast file manager                                                                                              |
 
 ### GUI
 

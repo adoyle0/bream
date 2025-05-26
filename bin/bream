@@ -30,6 +30,7 @@ wipe_old_files() {
         "$HOME"/.config/android \
         "$HOME"/.config/gnupg \
         "$HOME"/.config/gtk-2.0 \
+        "$HOME"/.config/nnn \
         "$HOME"/.config/shell \
         "$HOME"/.doors \
         "$HOME"/.local/bin \
