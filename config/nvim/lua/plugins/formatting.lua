@@ -2,6 +2,12 @@ return {
   'numToStr/Comment.nvim',
   { 'NMAC427/guess-indent.nvim', opts = {} }, -- Detect tabstop and shiftwidth automatically
   {
+    'windwp/nvim-ts-autotag',
+    opts = {
+      enable_close_on_slash = true,
+    },
+  },
+  {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
