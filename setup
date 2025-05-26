@@ -151,11 +151,16 @@ install_gui_arch() {
     # Hyprland setup
     paru -S --needed --noconfirm hyprland \
         cliphist \
+        grim \
         kitty \
         kitty-shell-integration \
+        slurp \
         swww \
         wl-clip-persist \
         wofi \
+        xdg-desktop-portal \
+        xdg-desktop-portal-gtk \
+        xdg-desktop-portal-hyprland \
         || return 1
 
 
