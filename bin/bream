@@ -27,11 +27,15 @@ wipe_old_files() {
 
     rm -rfv "$HOME"/*~ \
         "$HOME"/.config/*~ \
+        "$HOME"/.config/alacritty \
         "$HOME"/.config/android \
+        "$HOME"/.config/awesome \
         "$HOME"/.config/gnupg \
         "$HOME"/.config/gtk-2.0 \
         "$HOME"/.config/nnn \
+        "$HOME"/.config/picom.conf \
         "$HOME"/.config/shell \
+        "$HOME"/.config/x11 \
         "$HOME"/.doors \
         "$HOME"/.local/bin \
         "$HOME"/.local/share/cargo \
@@ -40,6 +44,7 @@ wipe_old_files() {
         "$HOME"/.local/share/kodi \
         "$HOME"/.local/share/password-store \
         "$HOME"/.profile \
+        "$HOME"/.xinitrc \
         || exit 1
 
     echo "Done"
@@ -59,7 +64,8 @@ setbg() {
     # Hack because walogram has a bug with hot-reload
     cp ~/.cache/walogram/wal.tdesktop-theme ~/.cache/walogram/bream.tdesktop-theme
     [ -x "$(command -v pywalfox)" ] && pywalfox update
-    xrdb -merge -quiet ~/.cache/wal/colors.Xresources
+    swww img "$(cat ~/.cache/wal/wal)"
+    # xrdb -merge -quiet ~/.cache/wal/colors.Xresources
 }
 
 screenshot() {

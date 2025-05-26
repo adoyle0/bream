@@ -46,6 +46,7 @@ alacritty = { src = "colors-alacritty.toml", dst = "~/.cache/wal/colors-alacritt
 colors = { src = "colors", dst = "~/.cache/wal/colors" }
 css = { src = "colors.css", dst = "~/.cache/wal/colors.css" }
 json = { src = "colors.json", dst = "~/.cache/wal/colors.json" }
+kitty = { src = "colors-kitty.conf", dst = "~/.cache/wal/colors-kitty.conf" }
 sh = { src = "colors.sh", dst = "~/.cache/wal/colors.sh" }
 vim = { src = "colors.vim", dst = "~/.cache/wal/colors-wal.vim" }
 xres = { src = "Xresources", dst = "~/.cache/wal/colors.Xresources" }
