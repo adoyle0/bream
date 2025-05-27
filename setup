@@ -171,6 +171,7 @@ install_gui_arch() {
         &&
 
     # Set dark theme
+    # Unset and then reset to ensure it sticks in case dconf doesn't exist
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-light' &&
     gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' &&
     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita' &&
