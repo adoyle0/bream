@@ -76,15 +76,8 @@ if status is-login
     # tell xz to use all threads
     set -gx XZ_DEFAULTS "-T 0"
 
-    # Start X at login
-    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-        exec startx -- -keeptty
-    end
-
     # Start hyprland at login
-    if test -z "$DISPLAY" -a "$XDG_VTNR" = 2
-        # if uwsm check may-start
+    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
         exec uwsm start hyprland.desktop
-        # end
     end
 end

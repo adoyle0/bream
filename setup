@@ -141,7 +141,6 @@ install_gui_arch() {
         noto-fonts-emoji \
         otf-commit-mono-nerd \
         playerctl \
-        polkit-gnome \
         python-pywalfox-librewolf \
         ttf-noto-nerd \
         wallust \
@@ -151,18 +150,32 @@ install_gui_arch() {
     # Hyprland setup
     paru -S --needed --noconfirm hyprland \
         cliphist \
+        hyprpolkitagent \
         grim \
         kitty \
         kitty-shell-integration \
+        mako \
+        pipewire \
+        qt5-wayland \
+        qt6-wayland \
         slurp \
         swww \
         uwsm \
         wl-clip-persist \
         waybar \
+        wireplumber \
         wofi \
         xdg-desktop-portal \
         xdg-desktop-portal-gtk \
         xdg-desktop-portal-hyprland \
+        &&
+
+    # Set dark theme
+    set org.gnome.desktop.interface color-scheme 'prefer-dark' &&
+    set org.gnome.desktop.interface gtk-theme 'Adwaita-dark' &&
+
+    # Enable this as a service to keep it out of the config
+    systemctl --user enable --now hyprpolkitagent.service \
         || return 1
 
 
@@ -203,9 +216,10 @@ install_configs() {
 
     cd "$cache_dir"/config &&
     for file in *; do
-        local oldfile="$config_dir"/"$file"
-        [ -e "$oldfile" ] && rm -rf "$oldfile"
-        cp -r "$file" "$oldfile" || break
+        local oldfile="$config_dir"
+        # TODO: Add clean install option
+        # [ -e "$oldfile" ] && rm -rf "$oldfile"
+        cp -vr --update=all "$file" "$oldfile" || break
     done || return 1
 
     return 0
@@ -345,9 +359,10 @@ main() {
             ;;
     esac
 
-    if [ "$user_input" -gt 1 ]; then
-        hyprctl reload
-    fi
+    # # Hack because everything gets weird.. probably from wiping hyprland.conf
+    # if [ "$user_input" -gt 1 ]; then
+    #     hyprctl reload
+    # fi
 
     return 0
 }
