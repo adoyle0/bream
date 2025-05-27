@@ -2,9 +2,7 @@ return {
   'numToStr/Comment.nvim',
   { 'NMAC427/guess-indent.nvim', opts = {} }, -- Detect tabstop and shiftwidth automatically
   {
-    'norcalli/nvim-colorizer.lua',
-    event = { 'BufReadPre', 'BufNewFile' },
-    cmd = { 'ColorizerAttachToBuffer' },
+    'brenoprata10/nvim-highlight-colors',
     opts = {},
   },
   {
