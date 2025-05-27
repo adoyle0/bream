@@ -44,9 +44,9 @@ alpha = 100
 wal = { src = "wal", dst = "~/.cache/wal/wal" }
 colors = { src = "colors", dst = "~/.cache/wal/colors" }
 css = { src = "colors.css", dst = "~/.cache/wal/colors.css" }
+dunst = { src = "dunstrc", dst = "~/.config/dunst/dunstrc" }
 json = { src = "colors.json", dst = "~/.cache/wal/colors.json" }
 kitty = { src = "colors-kitty.conf", dst = "~/.cache/wal/colors-kitty.conf" }
-mako = { src = "mako", dst = "~/.config/mako/config" }
 sh = { src = "colors.sh", dst = "~/.cache/wal/colors.sh" }
 vim = { src = "colors.vim", dst = "~/.cache/wal/colors-wal.vim" }
 waybar = { src = "colors-waybar.css", dst = "~/.cache/wal/colors-waybar.css" }

@@ -154,11 +154,11 @@ install_gui_arch() {
     # Hyprland setup
     paru -S --needed --noconfirm hyprland \
         cliphist \
+        dunst \
         hyprpolkitagent \
         grim \
         kitty \
         kitty-shell-integration \
-        mako \
         pipewire \
         qt5-wayland \
         qt6-wayland \
