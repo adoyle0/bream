@@ -140,10 +140,10 @@ install_gui_arch() {
         noto-fonts-cjk \
         noto-fonts-emoji \
         otf-commit-mono-nerd \
-        otf-font-awesome \
         playerctl \
         polkit-gnome \
         python-pywalfox-librewolf \
+        ttf-noto-nerd \
         wallust \
         zathura \
         &&
@@ -156,7 +156,9 @@ install_gui_arch() {
         kitty-shell-integration \
         slurp \
         swww \
+        uwsm \
         wl-clip-persist \
+        waybar \
         wofi \
         xdg-desktop-portal \
         xdg-desktop-portal-gtk \

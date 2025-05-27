@@ -1,3 +1,14 @@
+# wallust v3.3
+#
+# You can copy this file to ~/.config/wallust/wallust.toml (keep in mind is a sample config)
+
+# SIMPLE TUTORIAL, or `man wallust.5`:
+# https://explosion-mental.codeberg.page/wallust/
+#
+# If comming from v2: https://explosion-mental.codeberg.page/wallust/v3.html#wallusttoml
+
+# Global section - values below can be overwritten by command line flags
+
 # How the image is parse, in order to get the colors:
 # full - resized - wal - thumb -  fastresize - kmeans
 backend = "fastresize"
@@ -27,14 +38,17 @@ check_contrast = true
 # threshold = 20
 
 # Alpha value for templating, by default 100 (no other use whatsoever)
-# alpha = 100
+alpha = 100
 
 [templates]
+wal = { src = "wal", dst = "~/.cache/wal/wal" }
+alacritty = { src = "colors-alacritty.toml", dst = "~/.cache/wal/colors-alacritty.toml" }
 colors = { src = "colors", dst = "~/.cache/wal/colors" }
 css = { src = "colors.css", dst = "~/.cache/wal/colors.css" }
 json = { src = "colors.json", dst = "~/.cache/wal/colors.json" }
 kitty = { src = "colors-kitty.conf", dst = "~/.cache/wal/colors-kitty.conf" }
 sh = { src = "colors.sh", dst = "~/.cache/wal/colors.sh" }
 vim = { src = "colors.vim", dst = "~/.cache/wal/colors-wal.vim" }
-wal = { src = "wal", dst = "~/.cache/wal/wal" }
+waybar = { src = "colors-waybar.css", dst = "~/.cache/wal/colors-waybar.css" }
+xres = { src = "Xresources", dst = "~/.cache/wal/colors.Xresources" }
 zathura = { src = "zathurarc", dst = "~/.config/zathura/zathurarc" }
