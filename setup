@@ -11,6 +11,10 @@ _88o,,od8P888b "88bo,888oo,__ 888   888,888 Y88" 888o
 -----------------------------------------------------
 EOF
 
+# Bream setup script
+# `bream local` - runs setup from working dir, like in a branch
+# `bream files` - skips setup and just copies files from working dir
+
 bin_dir=/usr/bin
 config_dir="$HOME"/.config
 cache_dir="$HOME"/.cache/bream
@@ -214,7 +218,7 @@ install_shell() {
     return 0
 }
 
-install_configs() {
+install_config() {
     [ ! -d "$config_dir" ] && { mkdir -p "$config_dir" || return 1; }
 
     cd "$cache_dir"/config &&
@@ -301,7 +305,7 @@ setup_arch() {
         install_extras_arch || return 1
     fi &&
 
-    install_configs &&
+    install_config &&
     install_shell &&
 
     # this should be last
@@ -341,8 +345,6 @@ get_user_input() {
 }
 
 main() {
-    draw_header
-
     user_input=$(get_user_input)
 
     draw_header
@@ -362,16 +364,30 @@ main() {
             ;;
     esac
 
-    # # Hack because everything gets weird.. probably from wiping hyprland.conf
-    # if [ "$user_input" -gt 1 ]; then
-    #     hyprctl reload
-    # fi
-
     return 0
 }
 
+draw_header
+
+# Just copy files and exit
+if [ "$1" = files ]; then
+    echo "Copying files..."
+    cp -r . "$cache_dir" &&
+
+    install_home &&
+    install_config &&
+    install_bin &&
+
+    if cleanup; then
+        echo "Done" &&
+        exit 0
+    fi ||
+    echo "Error" &&
+    exit 1
+fi
+
 {
-    main && exit 0
+    main "$@" && exit 0
     } || {
     echo "Setup failed" &&
     cleanup &&
