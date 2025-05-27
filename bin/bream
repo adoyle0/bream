@@ -65,6 +65,7 @@ setbg() {
     cp ~/.cache/walogram/wal.tdesktop-theme ~/.cache/walogram/bream.tdesktop-theme
     [ -x "$(command -v pywalfox)" ] && pywalfox update
     swww img "$(cat ~/.cache/wal/wal)"
+    pkill -USR1 -f kitty
     # xrdb -merge -quiet ~/.cache/wal/colors.Xresources
 }
 

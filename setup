@@ -258,7 +258,9 @@ prepare() {
     # Rank mirrors for SPEED
     paru -S --needed --noconfirm rate-mirrors-bin &&
     install_bin &&
-    bream mirrors || return 1
+    if [ ! "$local_repo" ]; then
+        bream mirrors
+    fi || return 1
 
     return 0
 }
@@ -342,6 +344,10 @@ main() {
             return 1
             ;;
     esac
+
+    if [ "$user_input" -gt 1 ]; then
+        hyprctl reload
+    fi
 
     return 0
 }
