@@ -9,7 +9,7 @@
 
     "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["pulseaudio", "cpu", "memory", "battery", "tray", "clock"],
+    "modules-right": ["custom/focal", "pulseaudio", "cpu", "memory", "battery", "tray", "clock"],
 
 
     // modules config
@@ -18,7 +18,13 @@
         "separate-outputs": true,
         "icon": true,
     },
-
+    "custom/focal": {
+      "exec": "focal-waybar --recording 'REC'",
+      "format": "{}",
+      // interval to poll for updated recording status
+      "interval": 1,
+      "on-click": "focal video --stop",
+    },
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {

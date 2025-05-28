@@ -155,14 +155,13 @@ install_gui_arch() {
     paru -S --needed --noconfirm hyprland \
         cliphist \
         dunst \
+        focal-hyprland-git \
         hyprpolkitagent \
-        grim \
         kitty \
         kitty-shell-integration \
         pipewire \
         qt5-wayland \
         qt6-wayland \
-        slurp \
         swww \
         uwsm \
         wl-clip-persist \

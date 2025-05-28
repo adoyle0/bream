@@ -9,7 +9,6 @@ Options:
  clean       Cleans up old files
  install     Installs bream
  mirrors     Rates available mirrors and saves a sorted list
- screenshot  Display a menu with screenshot options
  setbg       Picks a random image from ~/Pictures/Wallpapers and generates color schemes based on it
        -r     Re-runs on last image
  uninstall   Uninstalls bream
@@ -74,17 +73,6 @@ setbg() {
     dunstctl reload
 }
 
-screenshot() {
-    case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in
-        "a selected area") maim -s pic-selected-"$(date '+%y%m%d-%H%M-%S').png" ;;
-        "current window") maim -i "$(xdotool getactivewindow)" pic-window-"$(date '+%y%m%d-%H%M-%S').png" ;;
-        "full screen") maim pic-full-"$(date '+%y%m%d-%H%M-%S').png" ;;
-        "a selected area (copy)") maim -s | xclip -selection clipboard -t image/png ;;
-        "current window (copy)") maim -i "$(xdotool getactivewindow)" | xclip -selection clipboard -t image/png ;;
-        "full screen (copy)") maim | xclip -selection clipboard -t image/png ;;
-    esac
-}
-
 mirrors() {
     . /etc/os-release
     OS=$NAME
@@ -130,10 +118,6 @@ main() {
                 ;;
             uninstall)
                 uninstall
-                break
-                ;;
-            screenshot)
-                screenshot
                 break
                 ;;
             setbg)
