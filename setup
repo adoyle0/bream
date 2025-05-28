@@ -245,7 +245,15 @@ install_home() {
     cd "$cache_dir"/home &&
 
     for file in *; do
-        cp -r "$file" "$HOME"/."$file" || break
+        if [ -d "$file" ]; then
+            if [ -d "$HOME/.$file" ]; then
+                cp -r "$file"/* "$HOME"/."$file"/ || break
+            else
+                cp -r "$file" "$HOME"/."$file" || break
+            fi
+        else
+            cp "$file" "$HOME"/."$file" || break
+        fi
     done || return 1
 
     return 0
