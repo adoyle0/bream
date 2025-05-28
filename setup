@@ -382,16 +382,17 @@ if [ "$1" = files ]; then
     echo "Copying files..."
     cp -r . "$cache_dir" &&
 
-    install_home &&
+    if install_home &&
     install_config &&
     install_bin &&
-
-    if cleanup; then
+    cleanup; then
         echo "Done" &&
         exit 0
-    fi ||
-    echo "Error" &&
-    exit 1
+    else
+        cleanup
+        echo "Error"
+        exit 1
+    fi
 fi
 
 {
