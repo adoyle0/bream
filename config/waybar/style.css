@@ -1,7 +1,6 @@
-@import "../../.cache/wal/colors-waybar.css"; /* can't get a nice path? or brainfart */
+@import "../../.cache/wal/colors-waybar.css";
 
 * {
-  /* `otf-font-awesome` is required to be installed for icons */
   font-family: monospace;
   font-size: 15px;
   color: @foreground;
@@ -40,6 +39,7 @@ button:hover {
   background-color: @color1;
   box-shadow: inset 0 -3px @foreground;
 }
+
 #tags button.urgent {
   color: red;
 }
