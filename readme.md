@@ -98,7 +98,8 @@ This section is more personal.
 1. ????
 1. PROFIT!!!!
 
-The mod keys are <kbd>Super</kbd>, <kbd>Menu</kbd>, and <kbd>Meta</kbd>
+> [!NOTE]
+> The mod keys are <kbd>Super</kbd>, <kbd>Menu</kbd>, and <kbd>Meta</kbd>
 
 ## Post Install
 
