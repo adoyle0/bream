@@ -30,7 +30,8 @@ abbr vd deactivate
 abbr vs "source bin/activate"
 
 # Vim
-abbr v "nvim ."
+abbr v nvim
+abbr vi nvim
 abbr vim nvim
 abbr vimdiff "nvim -d"
 
