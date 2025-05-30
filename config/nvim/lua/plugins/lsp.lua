@@ -206,6 +206,7 @@ return {
         'htmlbeautifier',
         'isort',
         'luacheck',
+        'mdformat',
         'nginx-language-server',
         'pbls',
         'prettier',

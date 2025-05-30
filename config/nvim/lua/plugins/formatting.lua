@@ -51,7 +51,7 @@ return {
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         json = { 'prettierd', 'prettier', stop_after_first = true },
         lua = { 'stylua' },
-        markdown = { 'markdownlint' },
+        markdown = { 'markdownlint', 'mdformat' },
         python = { 'isort', 'black' },
         rust = { 'leptosfmt', 'rustfmt' },
         scss = { 'prettierd', 'prettier', stop_after_first = true },
