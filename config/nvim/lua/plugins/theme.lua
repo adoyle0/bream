@@ -20,7 +20,6 @@ return {
     priority = 1000,
     opts = {
       transparent_background = true,
-      dim_inactive = true,
     },
     config = function()
       vim.cmd.colorscheme 'neopywal'
