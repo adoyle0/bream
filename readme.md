@@ -51,7 +51,7 @@ The meat and potatoes
 
 ### GUI
 
-AwesomeWM starter kit
+Hyprland starter kit
 
 | Package | Description |
 | - | - |
@@ -98,8 +98,7 @@ This section is more personal.
 1. ????
 1. PROFIT!!!!
 
-- The mod keys are Super, Menu, and Meta
-- Once in awesome press Mod + F1 for a reference of all keybinds
+The mod keys are <kbd>Super</kbd>, <kbd>Menu</kbd>, and <kbd>Meta</kbd>
 
 ## Post Install
 
