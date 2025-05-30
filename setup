@@ -52,7 +52,6 @@ install_base_arch() {
         cargo-binstall \
         coreutils \
         kitty-terminfo \
-        glow \
         man-db \
         man-pages \
         mold \
