@@ -58,11 +58,13 @@ Hyprland starter kit
 | [commit-mono-nerd](https://github.com/ryanoasis/nerd-fonts) | .otf nerd font that also supports bold, italic, and bold italic |
 | [chromium](https://www.chromium.org/Home/) | Backup browser |
 | [dunst](https://github.com/dunst-project/dunst) | Lightweight and customizable notification daemon |
+| [focal](https://github.com/iynaix/focal) | Slick screenshot/screen recording tool |
 | [hyprland](https://hyprland.org/) | Fast and great looking window manager/compositor |
 | [kitty](https://sw.kovidgoyal.net/kitty/) | Fast, feature-rich, GPU based terminal emulator |
 | [librewolf](https://librewolf.net/) | Main browser |
 | [noto-fonts](https://en.wikipedia.org/wiki/Noto_fonts) | Full coverage unicode fonts |
 | [python-pywalfox](https://github.com/frewacom/pywalfox) | Themes firefox with pywal colors |
+| [swww](https://github.com/LGFae/swww) | Wallpaper tool with animations |
 | [wallust](https://codeberg.org/explosion-mental/wallust) | Set whole system color scheme from wallpaper colors |
 | [waybar](https://github.com/Alexays/Waybar) | Highly customizable bar for wayland |
 | [wofi](https://github.com/SimplyCEO/wofi) | Fast launcher/menu program for wayland |
@@ -103,8 +105,7 @@ This section is more personal.
 
 ## Post Install
 
-> [!NOTE]
-> Some manual setup is required for theming if you want eye candy.
+Some manual setup is required for theming if you want eye candy.
 
 ### Pywalfox
 
