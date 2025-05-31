@@ -20,9 +20,10 @@ bin_dir=/usr/bin
 config_dir="$HOME"/.config
 cache_dir="$HOME"/.cache/bream
 git_url=https://git.doordesk.net/adam/bream.git
+git_branch="master"
 
 if [ "$1" = -b ]; then
-    git_url="$git_url -b $2"
+    git_branch="$2"
 fi
 
 if [ "$1" = local ]; then
@@ -295,7 +296,7 @@ prepare() {
     if [ "$local_repo" ]; then
         cp -r . "$cache_dir"
     else
-        git clone "$git_url" "$cache_dir"
+        git clone --branch "$git_branch" "$git_url" "$cache_dir"
     fi &&
 
     # Copy home files because it includes things like mold for rustc and some gpg keyservers
