@@ -35,9 +35,6 @@ abbr vi nvim
 abbr vim nvim
 abbr vimdiff "nvim -d"
 
-# launch nnn with plugins
-abbr n "NNN_TERMINAL='alacritty' NNN_FIFO=/tmp/nnn.fifo NNN_PLUG='f:preview-tui' nnn -P f"
-
 # Laziness/unsorted
 abbr bb byobu
 abbr glow "clear && glow"
