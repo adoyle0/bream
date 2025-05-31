@@ -287,7 +287,9 @@ prepare() {
     sudo pacman -S --needed --noconfirm git base-devel mold &&
 
     # Make sure .cache exists
-    mkdir "$HOME"/.cache &&
+    if ! [ -d "$HOME"/.cache ]; then
+        mkdir "$HOME"/.cache
+    fi &&
 
     # Sync files
     if [ "$local_repo" ]; then
