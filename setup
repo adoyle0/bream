@@ -275,6 +275,9 @@ prepare() {
     # grab mold here for linking any rust builds during the rest of the install
     sudo pacman -S --needed --noconfirm git base-devel mold &&
 
+    # Make sure .cache exists
+    mkdir "$HOME"/.cache &&
+
     # Sync files
     if [ "$local_repo" ]; then
         cp -r . "$cache_dir"
