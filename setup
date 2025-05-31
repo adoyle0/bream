@@ -192,6 +192,12 @@ install_gui_arch() {
     systemctl --user enable --now hyprpolkitagent.service \
         || return 1
 
+    # Init wal
+    if ! [ -d ~/.cache/wal ]; then
+        bream setbg
+    else
+        bream setbg -r
+    fi
 
     return 0
 }
