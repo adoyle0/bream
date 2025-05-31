@@ -299,13 +299,13 @@ prepare() {
         git clone --branch "$git_branch" "$git_url" "$cache_dir"
     fi &&
 
-    # Copy home files because it includes things like mold for rustc and some gpg keyservers
+    install_bin &&
     install_home &&
+    install_config &&
     ensure_paru &&
 
     # Rank mirrors for SPEED
     paru -S --needed --noconfirm --pgpfetch rate-mirrors-bin &&
-    install_bin &&
     if [ ! "$local_repo" ]; then
         bream mirrors
     fi || return 1
@@ -321,10 +321,10 @@ setup_arch() {
     fi &&
 
     if [ "$1" -ge 2 ]; then
+        init_wallpaper &&
         install_gui_arch &&
         init_browser &&
-        init_pywalfox &&
-        init_wallpaper || return 1
+        init_pywalfox || return 1
 
     fi &&
 
@@ -332,7 +332,6 @@ setup_arch() {
         install_extras_arch || return 1
     fi &&
 
-    install_config &&
     install_shell &&
 
     # this should be last
