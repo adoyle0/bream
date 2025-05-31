@@ -12,13 +12,18 @@ _88o,,od8P888b "88bo,888oo,__ 888   888,888 Y88" 888o
 EOF
 
 # Bream setup script
-# `bream local` - runs setup from working dir, like in a branch
-# `bream files` - skips setup and just copies files from working dir
+# `setup local` - runs setup from working dir, like in a branch
+# `setup files` - skips setup and just copies files from working dir
+# `setup -b [branch]` - download and install a certain branch
 
 bin_dir=/usr/bin
 config_dir="$HOME"/.config
 cache_dir="$HOME"/.cache/bream
 git_url=https://git.doordesk.net/adam/bream.git
+
+if [ "$1" = -b ]; then
+    git_url="$git_url -b $2"
+fi
 
 if [ "$1" = local ]; then
     local_repo=0
