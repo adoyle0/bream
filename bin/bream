@@ -6,7 +6,7 @@ usage() {
 Usage: bream [OPTION]
 
 Options:
- clean       Cleans up old files
+ clean       Cleans up old, unused, and conflicting files
  install     Installs bream
  mirrors     Rates available mirrors and saves a sorted list
  setbg       Picks a random image from ~/Pictures/Wallpapers and generates color schemes based on it
@@ -23,9 +23,10 @@ install() {
 }
 
 wipe_old_files() {
-    echo "Cleaning up old install files..."
+    echo "Cleaning up..."
 
     rm -rfv "$HOME"/*~ \
+        "$HOME"/.bash* \
         "$HOME"/.config/*~ \
         "$HOME"/.config/alacritty \
         "$HOME"/.config/android \
