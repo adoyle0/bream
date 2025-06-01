@@ -76,7 +76,9 @@ if status is-login
     set -gx XZ_DEFAULTS "-T 0"
 
     # Start hyprland at login
-    if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-        exec uwsm start hyprland.desktop
+    if test -e /usr/bin/hyprland
+        if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
+            exec uwsm start hyprland.desktop
+        end
     end
 end
