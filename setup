@@ -230,7 +230,7 @@ install_shell() {
     if ! [ "$SHELL" = "/bin/fish" ]; then
         sudo chsh -s /bin/fish "$USER" &&
         bream clean &&
-        echo "Log out and back in for changes to take effect"
+        echo "Reboot for changes to take effect"
     fi
 
     return 0
