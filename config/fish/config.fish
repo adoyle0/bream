@@ -14,6 +14,11 @@ abbr gp "git push"
 abbr gpl "git pull"
 abbr gs "git status"
 
+# Rust stuff
+abbr cgc "cargo clean"
+abbr cgu "cargo update"
+abbr ru "rustup update"
+
 # Add verbosity
 abbr cp "cp -iv"
 abbr mv "mv -iv"
@@ -35,9 +40,8 @@ abbr vi nvim
 abbr vim nvim
 abbr vimdiff "nvim -d"
 
-# Laziness/unsorted
+# Unsorted
 abbr bb byobu
-abbr glow "clear && glow"
 abbr ka killall
 abbr mkd "mkdir -pv"
 abbr t "tree -L"
