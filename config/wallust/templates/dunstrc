@@ -356,7 +356,7 @@
     default_icon = dialog-information
 
 [urgency_critical]
-    background = "{{color14}}{{ 90 | alpha_hexa }}"
+    background = "{{background}}{{ 90 | alpha_hexa }}"
     foreground = "{{foreground}}"
     frame_color = "#ff0000"
     timeout = 0
