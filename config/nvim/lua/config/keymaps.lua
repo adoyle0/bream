@@ -37,9 +37,6 @@ vim.keymap.set('n', '<leader>f', function()
   vim.lsp.buf.format()
 end)
 
--- Super substitute
-vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
 -- make current script executable
 vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true })
 
