@@ -18,7 +18,9 @@ return {
     lazy = false,
     cond = os.execute 'test -f ~/.cache/wal/colors-wal.vim' == 0,
     priority = 1000,
-    opts = {},
+    opts = {
+      transparent_background = true,
+    },
     config = function()
       vim.cmd.colorscheme 'neopywal'
     end,

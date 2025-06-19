@@ -6,11 +6,11 @@ usage() {
 Usage: bream [OPTION]
 
 Options:
- clean       Cleans up old files
+ clean       Cleans up old, unused, and conflicting files
  install     Installs bream
  mirrors     Rates available mirrors and saves a sorted list
- screenshot  Display a menu with screenshot options
  setbg       Picks a random image from ~/Pictures/Wallpapers and generates color schemes based on it
+       -r     Re-runs on last image
  uninstall   Uninstalls bream
  update      Updates bream
 
@@ -23,14 +23,20 @@ install() {
 }
 
 wipe_old_files() {
-    echo "Cleaning up old install files..."
+    echo "Cleaning up..."
 
     rm -rfv "$HOME"/*~ \
+        "$HOME"/.bash* \
         "$HOME"/.config/*~ \
+        "$HOME"/.config/alacritty \
         "$HOME"/.config/android \
+        "$HOME"/.config/awesome \
         "$HOME"/.config/gnupg \
         "$HOME"/.config/gtk-2.0 \
+        "$HOME"/.config/nnn \
+        "$HOME"/.config/picom.conf \
         "$HOME"/.config/shell \
+        "$HOME"/.config/x11 \
         "$HOME"/.doors \
         "$HOME"/.local/bin \
         "$HOME"/.local/share/cargo \
@@ -39,6 +45,7 @@ wipe_old_files() {
         "$HOME"/.local/share/kodi \
         "$HOME"/.local/share/password-store \
         "$HOME"/.profile \
+        "$HOME"/.xinitrc \
         || exit 1
 
     echo "Done"
@@ -48,28 +55,23 @@ wipe_old_files() {
 
 setbg() {
     # Pick a random wallpaper and generate colors
-    cd ~/Pictures/Wallpapers/ &&
-    find . |sort -R |tail -1 |while read -r file; do
-        wallust run -qs "$file"
-    done
+    if [ "$2" = -r ]; then
+        wallust run -s "$(cat "$HOME"/.cache/wal/wal)"
+    else
+        cd ~/Pictures/Wallpapers/ &&
+        find . |sort -R |tail -1 |while read -r file; do
+            wallust run -qs ~/Pictures/Wallpapers/"$file"
+        done
+    fi
 
     # Use the new colors
     [ -x "$(command -v walogram )" ] && walogram -B &&
     # Hack because walogram has a bug with hot-reload
     cp ~/.cache/walogram/wal.tdesktop-theme ~/.cache/walogram/bream.tdesktop-theme
     [ -x "$(command -v pywalfox)" ] && pywalfox update
-    xrdb -merge -quiet ~/.cache/wal/colors.Xresources
-}
-
-screenshot() {
-    case "$(printf "a selected area\\ncurrent window\\nfull screen\\na selected area (copy)\\ncurrent window (copy)\\nfull screen (copy)" | dmenu -l 6 -i -p "Screenshot which area?")" in
-        "a selected area") maim -s pic-selected-"$(date '+%y%m%d-%H%M-%S').png" ;;
-        "current window") maim -i "$(xdotool getactivewindow)" pic-window-"$(date '+%y%m%d-%H%M-%S').png" ;;
-        "full screen") maim pic-full-"$(date '+%y%m%d-%H%M-%S').png" ;;
-        "a selected area (copy)") maim -s | xclip -selection clipboard -t image/png ;;
-        "current window (copy)") maim -i "$(xdotool getactivewindow)" | xclip -selection clipboard -t image/png ;;
-        "full screen (copy)") maim | xclip -selection clipboard -t image/png ;;
-    esac
+    swww img "$(cat ~/.cache/wal/wal)"
+    pkill -USR1 -f kitty
+    dunstctl reload
 }
 
 mirrors() {
@@ -119,12 +121,8 @@ main() {
                 uninstall
                 break
                 ;;
-            screenshot)
-                screenshot
-                break
-                ;;
             setbg)
-                setbg
+                setbg "$@"
                 break
                 ;;
             *)

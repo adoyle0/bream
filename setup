@@ -11,10 +11,20 @@ _88o,,od8P888b "88bo,888oo,__ 888   888,888 Y88" 888o
 -----------------------------------------------------
 EOF
 
+# Bream setup script
+# `setup local` - runs setup from working dir, like in a branch
+# `setup files` - skips setup and just copies files from working dir
+# `setup -b [branch]` - download and install a certain branch
+
 bin_dir=/usr/bin
 config_dir="$HOME"/.config
 cache_dir="$HOME"/.cache/bream
 git_url=https://git.doordesk.net/adam/bream.git
+git_branch="master"
+
+if [ "$1" = -b ]; then
+    git_branch="$2"
+fi
 
 if [ "$1" = local ]; then
     local_repo=0
@@ -40,37 +50,57 @@ ensure_paru() {
 install_base_arch() {
     echo "Installing base..."
 
-    paru -S --needed --noconfirm \
-        atool \
+    paru -S --needed --noconfirm --pgpfetch \
         archlinux-contrib \
         bat \
         btop \
         byobu \
         cargo-binstall \
         coreutils \
-        fd \
-        fish \
-        fzf \
-        glow \
-        go \
+        kitty-terminfo \
         man-db \
         man-pages \
         mold \
         mosh \
-        neovim \
-        nnn \
-        npm \
         pacman-contrib \
-        pkgfile \
-        ripgrep \
         rsync \
-        rubygems \
         sl \
         tar \
         tree \
         unrar \
         unzip \
         wget \
+        &&
+
+    # Fish and deps
+    paru -S --needed --noconfirm --pgpfetch \
+        fish \
+        pkgfile \
+        &&
+
+    # Neovim and deps
+    paru -S --needed --noconfirm --pgpfetch \
+        fzf \
+        go \
+        neovim \
+        npm \
+        ripgrep \
+        rubygems \
+        &&
+
+    # Yazi and deps
+    paru -S --needed --noconfirm --pgpfetch \
+        7zip \
+        chafa\
+        fd \
+        ffmpeg \
+        fzf \
+        imagemagick \
+        jq \
+        poppler \
+        ripgrep \
+        yazi \
+        zoxide \
         &&
 
     cargo binstall --no-confirm leptosfmt || return 1
@@ -86,16 +116,6 @@ init_browser() {
     xdg-settings set default-web-browser librewolf.desktop &&
     # Set it anyway
     export BROWSER=librewolf || return 1
-
-    return 0
-}
-
-init_widgets() {
-    echo "Configuring awesome widgets..."
-
-    cd "$cache_dir" &&
-    git submodule init &&
-    git submodule update || return 1
 
     return 0
 }
@@ -121,43 +141,73 @@ init_wallpaper() {
     return 0
 }
 
+init_wal() {
+    if ! [ -d "$HOME"/.cache/wal ]; then
+        bream setbg
+    else
+        bream setbg -r
+    fi || return 1
+
+    return 0
+}
+
 install_gui_arch() {
-    paru -S --needed --noconfirm \
+    paru -S --needed --noconfirm --pgpfetch \
         acpi \
-        alacritty \
-        arandr \
-        awesome \
         bluez \
         chromium \
         gnome-themes-extra \
         librewolf-bin \
-        maim \
         noto-fonts \
         noto-fonts-cjk \
         noto-fonts-emoji \
-        nsxiv \
         otf-commit-mono-nerd \
-        otf-font-awesome \
-        picom \
         playerctl \
-        polkit-gnome \
         python-pywalfox-librewolf \
-        redshift \
-        unclutter \
+        ttf-noto-nerd \
         wallust \
-        xclip \
-        xorg-server \
-        xorg-xinit \
-        xorg-xrandr \
-        xwallpaper \
         zathura \
         &&
+
+    # Hyprland setup
+    paru -S --needed --noconfirm --pgpfetch \
+        cliphist \
+        dunst \
+        focal-hyprland-git \
+        hyprland \
+        hyprpolkitagent \
+        kitty \
+        kitty-shell-integration \
+        pipewire \
+        qt5-wayland \
+        qt6-wayland \
+        swww \
+        uwsm \
+        wl-clip-persist \
+        waybar \
+        wireplumber \
+        wofi \
+        xdg-desktop-portal \
+        xdg-desktop-portal-gtk \
+        xdg-desktop-portal-hyprland \
+        &&
+
+    # Set dark theme
+    # Unset and then reset to ensure it sticks in case dconf doesn't exist
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-light' &&
+    gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' &&
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita' &&
+    gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark' &&
+
+    # Enable this as a service to keep it out of the config
+    systemctl --user enable --now hyprpolkitagent.service \
+        || return 1
 
     return 0
 }
 
 install_extras_arch() {
-    paru -S --needed --noconfirm \
+    paru -S --needed --noconfirm --pgpfetch \
         discord \
         gimp \
         spotify-launcher \
@@ -168,16 +218,10 @@ install_extras_arch() {
 
     # Caprine depends on electon29 and it fails to build from the source it provides
     # A bin package exists so we're using it
-    paru -S --needed --noconfirm electron29-bin &&
+    paru -S --needed --noconfirm --pgpfetch electron29-bin &&
 
     # Ensure caprine comes after its dependency
-    paru -S --needed --noconfirm caprine-bin || return 1
-
-    return 0
-}
-
-init_nnn_plugins() {
-    sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)" || return 1
+    paru -S --needed --noconfirm --pgpfetch caprine-bin || return 1
 
     return 0
 }
@@ -185,21 +229,22 @@ init_nnn_plugins() {
 install_shell() {
     if ! [ "$SHELL" = "/bin/fish" ]; then
         sudo chsh -s /bin/fish "$USER" &&
-        ln -sf "$HOME"/.config/x11/xinitrc "$HOME"/.xinitrc || return 1
-        echo "Log out and back in for changes to take effect"
+        bream clean &&
+        echo "Reboot for changes to take effect"
     fi
 
     return 0
 }
 
-install_configs() {
+install_config() {
     [ ! -d "$config_dir" ] && { mkdir -p "$config_dir" || return 1; }
 
     cd "$cache_dir"/config &&
     for file in *; do
-        local oldfile="$config_dir"/"$file"
-        [ -e "$oldfile" ] && rm -rf "$oldfile"
-        cp -r "$file" "$oldfile" || break
+        local oldfile="$config_dir"
+        # TODO: Add clean install option
+        # [ -e "$oldfile" ] && rm -rf "$oldfile"
+        cp -r --update=all "$file" "$oldfile" || break
     done || return 1
 
     return 0
@@ -218,7 +263,15 @@ install_home() {
     cd "$cache_dir"/home &&
 
     for file in *; do
-        cp -r "$file" "$HOME"/."$file" || break
+        if [ -d "$file" ]; then
+            if [ -d "$HOME/.$file" ]; then
+                cp -r "$file"/* "$HOME"/."$file"/ || break
+            else
+                cp -r "$file" "$HOME"/."$file" || break
+            fi
+        else
+            cp "$file" "$HOME"/."$file" || break
+        fi
     done || return 1
 
     return 0
@@ -238,21 +291,28 @@ prepare() {
     # grab mold here for linking any rust builds during the rest of the install
     sudo pacman -S --needed --noconfirm git base-devel mold &&
 
+    # Make sure .cache exists
+    if ! [ -d "$HOME"/.cache ]; then
+        mkdir "$HOME"/.cache
+    fi &&
+
     # Sync files
     if [ "$local_repo" ]; then
         cp -r . "$cache_dir"
     else
-        git clone "$git_url" "$cache_dir"
+        git clone --branch "$git_branch" "$git_url" "$cache_dir"
     fi &&
 
-    # Copy home files because it includes things like mold for rustc and some gpg keyservers
+    install_bin &&
     install_home &&
+    install_config &&
     ensure_paru &&
 
     # Rank mirrors for SPEED
-    paru -S --needed --noconfirm rate-mirrors-bin &&
-    install_bin &&
-    bream mirrors || return 1
+    paru -S --needed --noconfirm --pgpfetch rate-mirrors-bin &&
+    if [ ! "$local_repo" ]; then
+        bream mirrors
+    fi || return 1
 
     return 0
 }
@@ -267,9 +327,9 @@ setup_arch() {
     if [ "$1" -ge 2 ]; then
         install_gui_arch &&
         init_browser &&
-        init_widgets &&
         init_pywalfox &&
-        init_wallpaper || return 1
+        init_wallpaper &&
+        init_wal || return 1
 
     fi &&
 
@@ -277,8 +337,6 @@ setup_arch() {
         install_extras_arch || return 1
     fi &&
 
-    init_nnn_plugins &&
-    install_configs &&
     install_shell &&
 
     # this should be last
@@ -318,8 +376,6 @@ get_user_input() {
 }
 
 main() {
-    draw_header
-
     user_input=$(get_user_input)
 
     draw_header
@@ -342,8 +398,28 @@ main() {
     return 0
 }
 
+draw_header
+
+# Just copy files and exit
+if [ "$1" = files ]; then
+    echo "Copying files..."
+    cp -r . "$cache_dir" &&
+
+    if install_home &&
+    install_config &&
+    install_bin &&
+    cleanup; then
+        echo "Done" &&
+        exit 0
+    else
+        cleanup
+        echo "Error"
+        exit 1
+    fi
+fi
+
 {
-    main && exit 0
+    main "$@" && exit 0
     } || {
     echo "Setup failed" &&
     cleanup &&

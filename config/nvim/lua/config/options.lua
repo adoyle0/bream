@@ -4,8 +4,8 @@ vim.schedule(function()
   vim.o.clipboard = 'unnamedplus'
 end)
 
--- Indent wrapped lines
-vim.o.breakindent = true
+-- Don't wrap
+vim.o.wrap = false
 
 -- Adjust completion selection
 vim.o.completeopt = 'longest,menuone,noselect'

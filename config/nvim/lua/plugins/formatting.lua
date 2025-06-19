@@ -1,11 +1,16 @@
 return {
   'numToStr/Comment.nvim',
   { 'NMAC427/guess-indent.nvim', opts = {} }, -- Detect tabstop and shiftwidth automatically
+  { 'brenoprata10/nvim-highlight-colors', opts = {} },
   {
     'windwp/nvim-ts-autotag',
-    opts = {
-      enable_close_on_slash = true,
-    },
+    config = function()
+      require('nvim-ts-autotag').setup {
+        opts = {
+          enable_close_on_slash = true,
+        },
+      }
+    end,
   },
   {
     'stevearc/conform.nvim',
@@ -46,7 +51,7 @@ return {
         javascriptreact = { 'prettierd', 'prettier', stop_after_first = true },
         json = { 'prettierd', 'prettier', stop_after_first = true },
         lua = { 'stylua' },
-        markdown = { 'prettierd', 'prettier', stop_after_first = true },
+        markdown = { 'mdformat' },
         python = { 'isort', 'black' },
         rust = { 'leptosfmt', 'rustfmt' },
         scss = { 'prettierd', 'prettier', stop_after_first = true },
