@@ -185,13 +185,6 @@ return {
         mutt_ls = {},
         pbls = {},
         pyright = {},
-        rust_analyzer = {
-          ['rust-analyzer'] = {
-            cargo = {
-              allFeatures = true,
-            },
-          },
-        },
         tailwindcss = {},
         ts_ls = {},
         yamlls = {},
@@ -211,7 +204,6 @@ return {
         'pbls',
         'prettier',
         'prettierd',
-        'rust-analyzer',
         'rustywind',
         'shellcheck',
         'shellharden',
