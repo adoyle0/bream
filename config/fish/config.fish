@@ -17,6 +17,7 @@ abbr gs "git status"
 # Rust stuff
 abbr cgc "cargo clean"
 abbr cgu "cargo update"
+abbr clw "cargo leptos watch"
 abbr ru "rustup update"
 
 # Add verbosity
