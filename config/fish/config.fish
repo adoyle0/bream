@@ -33,7 +33,7 @@ abbr push "rsync -avzP"
 
 # Python/virtualenv
 abbr vd deactivate
-abbr vs "source bin/activate"
+abbr vs "source bin/activate.fish"
 
 # Vim
 abbr v nvim
