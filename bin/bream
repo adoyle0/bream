@@ -34,6 +34,7 @@ wipe_old_files() {
         "$HOME"/.config/gnupg \
         "$HOME"/.config/gtk-2.0 \
         "$HOME"/.config/nnn \
+        "$HOME"/.config/nvim \
         "$HOME"/.config/picom.conf \
         "$HOME"/.config/shell \
         "$HOME"/.config/x11 \
@@ -43,12 +44,13 @@ wipe_old_files() {
         "$HOME"/.local/share/go \
         "$HOME"/.local/share/history \
         "$HOME"/.local/share/kodi \
+        "$HOME"/.local/share/nvim \
         "$HOME"/.local/share/password-store \
         "$HOME"/.profile \
         "$HOME"/.xinitrc \
         || exit 1
 
-    echo "Done"
+    echo "Done. Run setup again to replace deleted files."
 
     return 0
 }
