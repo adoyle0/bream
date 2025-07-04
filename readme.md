@@ -80,6 +80,7 @@ This section is more personal.
 | [caprine](https://sindresorhus.com/caprine/) | Facebook messenger |
 | [discord](https://discord.com/) | Discord |
 | [gimp](https://www.gimp.org/) | Image editor |
+| [inkscape](https://www.inkscape.org/) | Vector graphics editor |
 | [spotify-launcher](https://github.com/kpcyrd/spotify-launcher) | Handles Spotify |
 | [telegram-desktop](https://telegram.org/) | Telegram messenger |
 | [thunderbird](https://www.thunderbird.net) | Email client |
