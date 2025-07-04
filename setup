@@ -82,6 +82,7 @@ install_base_arch() {
     paru -S --needed --noconfirm --pgpfetch \
         fzf \
         go \
+        luarocks \
         neovim \
         npm \
         ripgrep \
