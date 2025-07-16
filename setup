@@ -57,7 +57,9 @@ install_base_arch() {
         byobu \
         cargo-binstall \
         coreutils \
+        gnome-keyring \
         kitty-terminfo \
+        libsecret \
         man-db \
         man-pages \
         mold \
@@ -210,6 +212,7 @@ install_gui_arch() {
 install_extras_arch() {
     paru -S --needed --noconfirm --pgpfetch \
         discord \
+        element-desktop \
         gimp \
         inkscape \
         spotify-launcher \
