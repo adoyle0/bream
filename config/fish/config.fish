@@ -48,6 +48,17 @@ abbr mkd "mkdir -pv"
 abbr t "tree -L"
 abbr x exit
 
+# Start yazi with y,
+# q to quit and cwd, Q to quit
+function y
+    set tmp (mktemp -t "yazi-cwd.XXXXXX")
+    yazi $argv --cwd-file="$tmp"
+    if read -z cwd <"$tmp"; and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+        builtin cd -- "$cwd"
+    end
+    rm -f -- "$tmp"
+end
+
 if status is-login
     # Source /etc/profile with bash
     if not set -q __sourced_profile
