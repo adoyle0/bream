@@ -166,6 +166,7 @@ return {
 
       local servers = {
         bashls = {},
+        clangd = {},
         cssls = {},
         docker_compose_language_service = {},
         dockerls = {},
