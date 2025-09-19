@@ -68,3 +68,6 @@ vim.o.undofile = true
 
 -- UI consistency
 vim.wo.signcolumn = 'yes'
+
+-- Auto linebreak
+vim.o.textwidth = 99
