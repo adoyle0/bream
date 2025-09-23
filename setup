@@ -62,7 +62,6 @@ install_base_arch() {
         libsecret \
         man-db \
         man-pages \
-        mold \
         mosh \
         pacman-contrib \
         rsync \
@@ -71,6 +70,7 @@ install_base_arch() {
         tree \
         unrar \
         unzip \
+        wild \
         wget \
         &&
 
@@ -292,8 +292,8 @@ prepare() {
     # Enable multi-threading for xz
     export XZ_DEFAULTS="-T 0" &&
 
-    # grab mold here for linking any rust builds during the rest of the install
-    sudo pacman -S --needed --noconfirm git base-devel mold &&
+    # grab wild here for linking any rust builds during the rest of the install
+    sudo pacman -S --needed --noconfirm git base-devel wild &&
 
     # Make sure .cache exists
     if ! [ -d "$HOME"/.cache ]; then
