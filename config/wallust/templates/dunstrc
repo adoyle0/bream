@@ -278,7 +278,7 @@
     #
     # Comma-separated list of the corners. The accepted corner values are bottom-right,
     # bottom-left, top-right, top-left, top, bottom, left, right or all.
-    corners = top=left, bottom
+    corners = top-left, bottom
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
