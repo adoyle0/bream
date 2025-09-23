@@ -56,6 +56,7 @@ install_base_arch() {
         btop \
         byobu \
         cargo-binstall \
+        clang \
         coreutils \
         gnome-keyring \
         kitty-terminfo \
@@ -292,8 +293,8 @@ prepare() {
     # Enable multi-threading for xz
     export XZ_DEFAULTS="-T 0" &&
 
-    # grab wild here for linking any rust builds during the rest of the install
-    sudo pacman -S --needed --noconfirm git base-devel wild &&
+    # grab wild here (wild requires clang) for linking any rust builds during the rest of the install
+    sudo pacman -S --needed --noconfirm git base-devel clang wild &&
 
     # Make sure .cache exists
     if ! [ -d "$HOME"/.cache ]; then
