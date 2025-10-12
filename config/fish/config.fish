@@ -12,6 +12,8 @@ abbr gco "git checkout"
 abbr gd "git diff"
 abbr gp "git push"
 abbr gpl "git pull"
+abbr gr "git restore"
+abbr grs "git restore --staged"
 abbr gs "git status"
 
 # Rust stuff
