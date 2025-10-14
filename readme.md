@@ -42,6 +42,7 @@ The meat and potatoes
 | [btop](https://github.com/aristocratos/btop) | Top++ |
 | [byobu](https://www.byobu.org/) | Comfy multiplexer (aka `bb`) |
 | [fish](https://fishshell.com/) | Amazing shell with an amazing name |
+| [kondo](https://github.com/tbillington/kondo) | An awesome tool for cleaning up build artifacts |
 | [mosh](https://mosh.org/) | MObile SHell, like ssh but better with a bad connection |
 | [neovim](https://github.com/neovim/neovim) | The best editor (aka `v`) |
 | [paru](https://github.com/Morganamilo/paru) | Easier to use Arch package manager that supports AUR |

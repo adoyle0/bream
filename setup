@@ -59,6 +59,7 @@ install_base_arch() {
         clang \
         coreutils \
         gnome-keyring \
+        kondo \
         kitty-terminfo \
         libsecret \
         man-db \
