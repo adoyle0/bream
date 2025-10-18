@@ -396,7 +396,7 @@ main() {
             setup_arch "$user_input" || return 1
             ;;
         *)
-            printf '%s' "$os_name is not supported at this time\n"
+            printf "%s is not supported at this time\n" "$os_name"
             return 1
             ;;
     esac
