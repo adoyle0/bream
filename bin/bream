@@ -87,6 +87,9 @@ mirrors() {
         "Arch Linux ARM")
             rate-mirrors archarm | sudo tee /etc/pacman.d/mirrorlist
             ;;
+        "Manjaro")
+            rate-mirrors manjaro | sudo tee /etc/pacman.d/mirrorlist
+            ;;
         *)
             echo "$OS is not supported by this script at this time."
             exit 1
