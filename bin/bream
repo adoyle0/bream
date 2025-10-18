@@ -87,7 +87,7 @@ mirrors() {
         "Arch Linux ARM")
             rate-mirrors archarm | sudo tee /etc/pacman.d/mirrorlist
             ;;
-        "Manjaro")
+        "Manjaro Linux")
             rate-mirrors manjaro | sudo tee /etc/pacman.d/mirrorlist
             ;;
         *)
