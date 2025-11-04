@@ -57,7 +57,7 @@ Hyprland starter kit
 | Package | Description |
 | - | - |
 | [commit-mono-nerd](https://github.com/ryanoasis/nerd-fonts) | .otf nerd font that also supports bold, italic, and bold italic |
-| [chromium](https://www.chromium.org/Home/) | Backup browser |
+| [trivalent](https://github.com/secureblue/Trivalent) | Backup browser |
 | [dunst](https://github.com/dunst-project/dunst) | Lightweight and customizable notification daemon |
 | [focal](https://github.com/iynaix/focal) | Slick screenshot/screen recording tool |
 | [hyprland](https://hyprland.org/) | Fast and great looking window manager/compositor |
