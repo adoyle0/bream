@@ -11,6 +11,7 @@ abbr gc --set-cursor 'git commit -m "%"'
 abbr gco "git checkout"
 abbr gd "git diff"
 abbr gp "git push"
+abbr gps "git push --set-upstream origin"
 abbr gpl "git pull"
 abbr gr "git restore"
 abbr grs "git restore --staged"
@@ -81,11 +82,12 @@ if status is-login
     set -U fish_greeting
 
     # Default programs
+    set -gx ANDROID_HOME "~/.local/android/sdk"
     set -gx BROWSER librewolf
     set -gx EDITOR nvim
-    set -gx VISUAL nvim
     set -gx PAGER "bat -p"
     set -gx TERMINAL alacritty
+    set -gx VISUAL nvim
 
     # Make fzf easier on the eyes
     set -gx FZF_DEFAULT_OPTS "--layout=reverse --height 40%"
