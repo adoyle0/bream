@@ -81,8 +81,11 @@ if status is-login
     # Disable default greeting message
     set -U fish_greeting
 
+    # Android stuff for taury
+    set -gx ANDROID_HOME $HOME/Android/Sdk
+    set -gx NDK_HOME $ANDROID_HOME/ndk/(ls -1 $ANDROID_HOME/ndk)
+
     # Default programs
-    set -gx ANDROID_HOME "~/.local/android/sdk"
     set -gx BROWSER librewolf
     set -gx EDITOR nvim
     set -gx PAGER "bat -p"
