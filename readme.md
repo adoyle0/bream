@@ -56,6 +56,7 @@ Hyprland starter kit
 
 | Package | Description |
 | - | - |
+| [awww](https://codeberg.org/LGFae/awww) | Wallpaper tool with animations |
 | [commit-mono-nerd](https://github.com/ryanoasis/nerd-fonts) | .otf nerd font that also supports bold, italic, and bold italic |
 | [trivalent](https://github.com/secureblue/Trivalent) | Backup browser |
 | [dunst](https://github.com/dunst-project/dunst) | Lightweight and customizable notification daemon |
@@ -65,7 +66,6 @@ Hyprland starter kit
 | [librewolf](https://librewolf.net/) | Main browser |
 | [noto-fonts](https://en.wikipedia.org/wiki/Noto_fonts) | Full coverage unicode fonts |
 | [python-pywalfox](https://github.com/frewacom/pywalfox) | Themes firefox with pywal colors |
-| [swww](https://github.com/LGFae/swww) | Wallpaper tool with animations |
 | [wallust](https://codeberg.org/explosion-mental/wallust) | Set whole system color scheme from wallpaper colors |
 | [waybar](https://github.com/Alexays/Waybar) | Highly customizable bar for wayland |
 | [wofi](https://github.com/SimplyCEO/wofi) | Fast launcher/menu program for wayland |

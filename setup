@@ -186,7 +186,7 @@ install_gui_arch() {
         pipewire \
         qt5-wayland \
         qt6-wayland \
-        swww \
+        awww-git \
         uwsm \
         wl-clip-persist \
         waybar \

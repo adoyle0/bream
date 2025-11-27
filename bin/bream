@@ -71,7 +71,7 @@ setbg() {
     # Hack because walogram has a bug with hot-reload
     cp ~/.cache/walogram/wal.tdesktop-theme ~/.cache/walogram/bream.tdesktop-theme
     [ -x "$(command -v pywalfox)" ] && pywalfox update
-    swww img "$(cat ~/.cache/wal/wal)"
+    awww img "$(cat ~/.cache/wal/wal)"
     pkill -USR1 -f kitty
     dunstctl reload
 }
