@@ -91,6 +91,8 @@ install_base_arch() {
         npm \
         ripgrep \
         rubygems \
+        tree-sitter-cli \
+        tree-sitter-grammars \
         &&
 
     # Yazi and deps

@@ -11,6 +11,9 @@ return {
       end,
     },
   },
+  ---@module 'gitsigns'
+  ---@type Gitsigns.Config
+  ---@diagnostic disable-next-line: missing-fields
   opts = {
     on_attach = function(bufnr)
       local gitsigns = require 'gitsigns'
@@ -46,21 +49,33 @@ return {
       map('v', '<leader>hr', function()
         gitsigns.reset_hunk { vim.fn.line '.', vim.fn.line 'v' }
       end, { desc = 'git [r]eset hunk' })
+
       -- normal mode
       map('n', '<leader>hs', gitsigns.stage_hunk, { desc = 'git [s]tage hunk' })
       map('n', '<leader>hr', gitsigns.reset_hunk, { desc = 'git [r]eset hunk' })
       map('n', '<leader>hS', gitsigns.stage_buffer, { desc = 'git [S]tage buffer' })
-      map('n', '<leader>hu', gitsigns.stage_hunk, { desc = 'git [u]ndo stage hunk' })
       map('n', '<leader>hR', gitsigns.reset_buffer, { desc = 'git [R]eset buffer' })
       map('n', '<leader>hp', gitsigns.preview_hunk, { desc = 'git [p]review hunk' })
-      map('n', '<leader>hb', gitsigns.blame_line, { desc = 'git [b]lame line' })
+      map('n', '<leader>hi', gitsigns.preview_hunk_inline, { desc = 'git preview hunk [inline]' })
+      map('n', '<leader>hb', function()
+        gitsigns.blame_line { full = true }
+      end, { desc = 'git [b]lame line' })
       map('n', '<leader>hd', gitsigns.diffthis, { desc = 'git [d]iff against index' })
       map('n', '<leader>hD', function()
-        gitsigns.diffthis '@'
+        gitsigns.diffthis '~'
       end, { desc = 'git [D]iff against last commit' })
+
+      map('n', '<leader>hQ', function()
+        gitsigns.setqflist 'all'
+      end, { desc = 'git set all [Q]uickfix' })
+      map('n', '<leader>hq', gitsigns.setqflist, { desc = 'git add to [q]uickfix' })
+
       -- Toggles
-      map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[T]oggle git show [b]lame line' })
-      map('n', '<leader>tD', gitsigns.preview_hunk_inline, { desc = '[T]oggle git show [D]eleted' })
+      map('n', '<leader>tb', gitsigns.toggle_current_line_blame, { desc = '[t]oggle git show [b]lame line' })
+      map('n', '<leader>tw', gitsigns.toggle_word_diff, { desc = '[t]oggle git [w]ord diff' })
+
+      -- Text object
+      map({ 'o', 'x' }, 'ih', gitsigns.select_hunk)
     end,
   },
 }

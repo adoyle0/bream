@@ -5,7 +5,7 @@ return {
     local lint = require 'lint'
     lint.linters_by_ft = {
       eslint = { 'eslint' },
-      lua = { 'luacheck' },
+      -- lua = { 'luacheck' }, broken: https://github.com/lunarmodules/luacheck/issues/140
       markdown = { 'markdownlint' },
       shell = { 'shellcheck' },
     }
