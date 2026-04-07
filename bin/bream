@@ -19,7 +19,7 @@ https://bream.doordesk.net
 }
 
 install() {
-    sh <(curl -s https://doors.doordesk.net/setup)
+    sh <(curl -s https://bream.doordesk.net/setup)
 }
 
 wipe_old_files() {
