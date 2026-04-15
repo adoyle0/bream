@@ -2,19 +2,16 @@ return {
   'numToStr/Comment.nvim',
   { 'NMAC427/guess-indent.nvim', opts = {} }, -- Detect tabstop and shiftwidth automatically
   { 'brenoprata10/nvim-highlight-colors', opts = {} },
-
-  -- broken: https://github.com/windwp/nvim-ts-autotag/pull/260
-  -- {
-  --   'windwp/nvim-ts-autotag',
-  --   config = function()
-  --     require('nvim-ts-autotag').setup {
-  --       opts = {
-  --         enable_close_on_slash = true,
-  --       },
-  --     }
-  --   end,
-  -- },
-
+  {
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup {
+        opts = {
+          enable_close_on_slash = true,
+        },
+      }
+    end,
+  },
   {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
