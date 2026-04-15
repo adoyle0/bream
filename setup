@@ -225,13 +225,6 @@ install_extras_arch() {
         walogram-git \
         &&
 
-    # Caprine depends on electon29 and it fails to build from the source it provides
-    # A bin package exists so we're using it
-    paru -S --needed --noconfirm --pgpfetch electron29-bin &&
-
-    # Ensure caprine comes after its dependency
-    paru -S --needed --noconfirm --pgpfetch caprine-bin || return 1
-
     return 0
 }
 

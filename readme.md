@@ -78,7 +78,6 @@ This section is more personal.
 
 | Package | Description |
 | - | - |
-| [caprine](https://sindresorhus.com/caprine/) | Facebook messenger |
 | [discord](https://discord.com/) | Discord |
 | [gimp](https://www.gimp.org/) | Image editor |
 | [inkscape](https://www.inkscape.org/) | Vector graphics editor |
