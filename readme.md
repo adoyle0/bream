@@ -78,7 +78,7 @@ This section is more personal.
 
 | Package | Description |
 | - | - |
-| [discord](https://discord.com/) | Discord |
+| [discord_arch_electron](https://discord.com/) | Discord |
 | [gimp](https://www.gimp.org/) | Image editor |
 | [inkscape](https://www.inkscape.org/) | Vector graphics editor |
 | [spotify-launcher](https://github.com/kpcyrd/spotify-launcher) | Handles Spotify |

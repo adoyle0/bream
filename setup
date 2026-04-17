@@ -215,7 +215,7 @@ install_gui_arch() {
 
 install_extras_arch() {
     paru -S --needed --noconfirm --pgpfetch \
-        discord \
+        discord_arch_electron \
         element-desktop \
         gimp \
         inkscape \
