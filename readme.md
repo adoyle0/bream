@@ -79,6 +79,7 @@ This section is more personal.
 | Package | Description |
 | - | - |
 | [discord_arch_electron](https://discord.com/) | Discord |
+| [element-desktop-nightly-bin](https://github.com/element-hq/element-web) | Matrix client |
 | [gimp](https://www.gimp.org/) | Image editor |
 | [inkscape](https://www.inkscape.org/) | Vector graphics editor |
 | [spotify-launcher](https://github.com/kpcyrd/spotify-launcher) | Handles Spotify |
