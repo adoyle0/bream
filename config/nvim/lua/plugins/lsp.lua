@@ -186,7 +186,7 @@ return {
       'eslint_d',
       'htmlbeautifier',
       'isort',
-      -- 'luacheck', broken: https://github.com/lunarmodules/luacheck/issues/140
+      'luacheck',
       'mdformat',
       -- 'nginx-language-server', broken: https://github.com/pappasam/nginx-language-server/issues/24
       'pbls',
