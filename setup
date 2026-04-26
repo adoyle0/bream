@@ -39,7 +39,7 @@ ensure_paru() {
         # git clone will return 0 even on error so clean up ahead of time
         rm -rf "$paru_dir"
 
-        git clone https://aur.archlinux.org/paru-bin.git "$paru_dir" &&
+        git clone https://aur.archlinux.org/paru.git "$paru_dir" &&
         cd "$paru_dir" &&
         makepkg -si --noconfirm || return 1
     fi
