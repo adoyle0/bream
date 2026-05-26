@@ -276,10 +276,10 @@ setup_gentoo() {
 
     if [ "$1" -ge 2 ]; then
         install_gui_gentoo || return 1
-        # init_browser &&
+        init_browser &&
         # init_pywalfox &&
-        # init_wallpaper &&
-        # init_wal || return 1
+        init_wallpaper &&
+        init_wal || return 1
     fi &&
 
     if [ "$1" -ge 3 ]; then
