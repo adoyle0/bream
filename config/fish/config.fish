@@ -72,16 +72,10 @@ if status is-login
         "
     end
 
-    # Add cargo bin to path
-    fish_add_path ~/.cargo/bin/
-
-    # Use vi bindings
-    fish_vi_key_bindings
-
     # Disable default greeting message
     set -U fish_greeting
 
-    # Android stuff for taury
+    # Android stuff for tauri
     set -gx ANDROID_HOME $HOME/Android/Sdk
     set -gx NDK_HOME $ANDROID_HOME/ndk/(ls -1 $ANDROID_HOME/ndk)
 
@@ -89,7 +83,7 @@ if status is-login
     set -gx BROWSER librewolf
     set -gx EDITOR nvim
     set -gx PAGER "bat -p"
-    set -gx TERMINAL alacritty
+    set -gx TERMINAL kitty
     set -gx VISUAL nvim
 
     # Make fzf easier on the eyes
@@ -99,9 +93,15 @@ if status is-login
     set -gx XZ_DEFAULTS "-T 0"
 
     # Start hyprland at login
-    if test -e /usr/bin/hyprland
+    if test -e /usr/bin/mango
         if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-            exec uwsm start hyprland.desktop
+            exec uwsm start mango.desktop
         end
     end
 end
+
+# Add cargo bin to path
+fish_add_path ~/.cargo/bin/
+
+# Use vi bindings
+fish_vi_key_bindings
