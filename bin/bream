@@ -6,16 +6,14 @@ usage() {
 Usage: bream [OPTION]
 
 Options:
- clean       Cleans up old, unused, and conflicting files
- install     Installs bream
- mirrors     Rates available mirrors and saves a sorted list
- setbg       Picks a random image from ~/Pictures/Wallpapers and generates color schemes based on it
-       -r     Re-runs on last image
- uninstall   Uninstalls bream
- update      Updates bream
+  clean       Cleans up old, unused, and conflicting files
+  install     Installs bream
+  setbg       Generates a color scheme from a random image in ~/Pictures/Wallpapers
+        -r      Re-runs on last image
+  uninstall   Uninstalls bream
+  update      Updates bream
 
-https://bream.doordesk.net
-    "
+https://bream.doordesk.net"
 }
 
 install() {
@@ -76,29 +74,8 @@ setbg() {
     dunstctl reload
 }
 
-mirrors() {
-    . /etc/os-release
-    OS=$NAME
-
-    case "$OS" in
-        "Arch Linux")
-            rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist
-            ;;
-        "Arch Linux ARM")
-            rate-mirrors archarm | sudo tee /etc/pacman.d/mirrorlist
-            ;;
-        "Manjaro Linux")
-            rate-mirrors manjaro | sudo tee /etc/pacman.d/mirrorlist
-            ;;
-        *)
-            echo "$OS is not supported by this script at this time."
-            exit 1
-            ;;
-    esac
-}
-
 uninstall() {
-    sudo rm -rf /usr/bin/bream
+    rm -rf "$HOME"/.local/bin/bream
 
     # TODO: create a manifest or something to feed to rm for files in $HOME
 }
@@ -118,10 +95,6 @@ main() {
                 usage
                 break
                 ;;
-            mirrors)
-                mirrors
-                break
-                ;;
             uninstall)
                 uninstall
                 break
@@ -139,7 +112,7 @@ main() {
     done
 
     [[ $# -eq 0 ]] &&
-    printf "bream: missing input\nTry 'bream --help' for more information." && exit 0
+    printf "bream: missing input\nTry 'bream --help' for more information.\n" && exit 0
 
     return 0
 }

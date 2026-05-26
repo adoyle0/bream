@@ -86,6 +86,12 @@ if status is-login
     set -gx TERMINAL kitty
     set -gx VISUAL nvim
 
+    # Add cargo bin to path
+    fish_add_path ~/.cargo/bin/
+
+    # Add .local bin to path
+    fish_add_path ~/.local/bin/
+
     # Make fzf easier on the eyes
     set -gx FZF_DEFAULT_OPTS "--layout=reverse --height 40%"
 
@@ -99,9 +105,6 @@ if status is-login
         end
     end
 end
-
-# Add cargo bin to path
-fish_add_path ~/.cargo/bin/
 
 # Use vi bindings
 fish_vi_key_bindings

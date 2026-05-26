@@ -1,0 +1,23 @@
+*/* dbus networkmanager zstd zlib brotli lzma threads
+
+*/* pipewire policykit wayland gtk -kde
+media-video/pipewire sound-server pulseaudio pipewire-alsa
+
+*/* jpeg webp tiff png ffmpeg
+app-text/poppler cairo
+media-libs/babl lcms
+media-libs/gegl cairo lcms
+media-video/pipewire extra
+
+app-text/xmlto text
+dev-cpp/cairomm X
+dev-cpp/gtkmm X
+dev-libs/newt python
+media-libs/freetype harfbuzz
+media-libs/libglvnd X
+media-libs/libpulse X
+media-libs/vulkan-loader X
+media-plugins/alsa-plugins pulseaudio
+x11-libs/cairo X
+x11-libs/libxkbcommon X
+x11-libs/pango X

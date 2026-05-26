@@ -30,91 +30,6 @@ if [ "$1" = local ]; then
     local_repo=0
 fi
 
-ensure_paru() {
-    if [ ! "$(command -v paru)" ]; then
-        echo "Installing paru..."
-
-        local paru_dir="$cache_dir"/paru
-
-        # git clone will return 0 even on error so clean up ahead of time
-        rm -rf "$paru_dir"
-
-        git clone https://aur.archlinux.org/paru.git "$paru_dir" &&
-        cd "$paru_dir" &&
-        makepkg -si --noconfirm || return 1
-    fi
-
-    return 0
-}
-
-install_base_arch() {
-    echo "Installing base..."
-
-    paru -S --needed --noconfirm --pgpfetch \
-        archlinux-contrib \
-        bat \
-        btop \
-        byobu \
-        cargo-binstall \
-        clang \
-        coreutils \
-        gnome-keyring \
-        kondo \
-        kitty-terminfo \
-        libsecret \
-        man-db \
-        man-pages \
-        mosh \
-        pacman-contrib \
-        rsync \
-        sl \
-        tar \
-        tree \
-        unrar \
-        unzip \
-        wild \
-        wget \
-        &&
-
-    # Fish and deps
-    paru -S --needed --noconfirm --pgpfetch \
-        fish \
-        pkgfile \
-        &&
-
-    # Neovim and deps
-    paru -S --needed --noconfirm --pgpfetch \
-        fzf \
-        go \
-        luarocks \
-        neovim \
-        npm \
-        ripgrep \
-        rubygems \
-        tree-sitter-cli \
-        tree-sitter-grammars \
-        &&
-
-    # Yazi and deps
-    paru -S --needed --noconfirm --pgpfetch \
-        7zip \
-        chafa\
-        fd \
-        ffmpeg \
-        fzf \
-        imagemagick \
-        jq \
-        poppler \
-        ripgrep \
-        yazi \
-        zoxide \
-        &&
-
-    cargo binstall --no-confirm leptosfmt || return 1
-
-    return 0
-}
-
 install_base_gentoo() {
     echo "Installing base..."
 
@@ -124,7 +39,9 @@ install_base_gentoo() {
         byobu \
         llvm-core/clang \
         coreutils \
+        eselect-repository \
         fish \
+        dev-vcs/git \
         gnome-keyring \
         kitty-terminfo \
         libsecret \
@@ -213,36 +130,31 @@ init_wal() {
     return 0
 }
 
-install_gui_arch() {
-    paru -S --needed --noconfirm --pgpfetch \
+install_gui_gentoo() {
+    sudo eselect repository add librewolf git https://codeberg.org/librewolf/gentoo.git
+    sudo emaint sync -r librewolf
+
+    sudo emerge -u \
         acpi \
-        bluez \
-        gnome-themes-extra \
+        gnome-themes-standard \
         librewolf-bin \
-        noto-fonts \
-        noto-fonts-cjk \
-        noto-fonts-emoji \
-        otf-commit-mono-nerd \
+        noto \
+        noto-cjk \
+        noto-emoji \
         playerctl \
-        python-pywalfox-librewolf \
-        trivalent-bin \
-        ttf-noto-nerd \
         wallust \
         zathura \
         &&
 
-    # Hyprland setup
-    paru -S --needed --noconfirm --pgpfetch \
+    # Mango setup
+    sudo emerge -u \
         cliphist \
         dunst \
-        focal-hyprland-git \
-        hyprland \
-        hyprpolkitagent \
+        mangowm \
+        polkit \
         kitty \
         kitty-shell-integration \
         pipewire \
-        qt5-wayland \
-        qt6-wayland \
         awww \
         uwsm \
         wl-clip-persist \
@@ -251,7 +163,7 @@ install_gui_arch() {
         wofi \
         xdg-desktop-portal \
         xdg-desktop-portal-gtk \
-        xdg-desktop-portal-hyprland \
+        xdg-desktop-portal-wlr \
         &&
 
     # Set dark theme
@@ -261,23 +173,17 @@ install_gui_arch() {
     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita' &&
     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark' &&
 
-    # Enable this as a service to keep it out of the config
-    systemctl --user enable --now hyprpolkitagent.service \
-        || return 1
-
     return 0
 }
 
-install_extras_arch() {
-    paru -S --needed --noconfirm --pgpfetch \
-        discord_arch_electron \
-        element-desktop-nightly-bin \
+install_extras_gentoo() {
+    sudo emerge -u \
+        discord \
+        element-desktop-bin \
         gimp \
         inkscape \
-        spotify-launcher \
-        telegram-desktop \
-        thunderbird \
-        walogram-git \
+        telegram-desktop-bin \
+        thunderbird-bin \
         &&
 
     return 0
@@ -334,71 +240,11 @@ install_home() {
 }
 
 cleanup() {
-    # [ -d "$cache_dir" ] && { rm -rf "$cache_dir" || return 1; }
-    # [ -d "$cache_dir" ] && { rm -rf "$cache_dir" || return 1; }
     [ -d "$cache_dir" ] && { rm -rf "$cache_dir" && return 0; } || return 0
 }
 
-prepare() {
-    # Enable pacman colors
-    sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
-
-    # Enable multi-threading for xz
-    export XZ_DEFAULTS="-T 0" &&
-
-    # grab wild here (wild requires clang) for linking any rust builds during the rest of the install
-    sudo pacman -S --needed --noconfirm git base-devel clang wild &&
-
-    # Make sure .cache exists
-    if ! [ -d "$HOME"/.cache ]; then
-        mkdir "$HOME"/.cache
-    fi &&
-
-    # Sync files
-    if [ "$local_repo" ]; then
-        cp -r . "$cache_dir"
-    else
-        git clone --branch "$git_branch" "$git_url" "$cache_dir"
-    fi &&
-
-    install_bin &&
-    install_home &&
-    install_config &&
-    ensure_paru &&
-
-    # Rank mirrors for SPEED
-    paru -S --needed --noconfirm --pgpfetch rate-mirrors-bin &&
-    if [ ! "$local_repo" ]; then
-        bream mirrors
-    fi || return 1
-
-    return 0
-}
-
-setup_arch() {
-    prepare &&
-
-    if [ "$1" -ge 1 ]; then
-        install_base_arch || return 1
-    fi &&
-
-    if [ "$1" -ge 2 ]; then
-        install_gui_arch &&
-        init_browser &&
-        init_pywalfox &&
-        init_wallpaper &&
-        init_wal || return 1
-
-    fi &&
-
-    if [ "$1" -ge 3 ]; then
-        install_extras_arch || return 1
-    fi &&
-
-    install_shell &&
-
-    # this should be last
-    cleanup || return 1
+install_portage() {
+    yes | sudo cp -r portage/* /etc/portage/ || return 1
 
     return 0
 }
@@ -421,9 +267,23 @@ setup_gentoo() {
     install_bin &&
     install_home &&
     install_config &&
+    install_portage &&
+
 
     if [ "$1" -ge 1 ]; then
         install_base_gentoo || return 1
+    fi &&
+
+    if [ "$1" -ge 2 ]; then
+        install_gui_gentoo || return 1
+        # init_browser &&
+        # init_pywalfox &&
+        # init_wallpaper &&
+        # init_wal || return 1
+    fi &&
+
+    if [ "$1" -ge 3 ]; then
+        install_extras_gentoo || return 1
     fi &&
 
     install_shell &&
@@ -473,24 +333,8 @@ main() {
     . /etc/os-release
     local os_name=$NAME
 
-    case "$os_name" in
-        *Arch*)
-            printf "Setup for %s\n\n" "$os_name"
-            setup_arch "$user_input" || return 1
-            ;;
-        *Manjaro*)
-            printf "Setup for %s\n\n" "$os_name"
-            setup_arch "$user_input" || return 1
-            ;;
-        Gentoo)
-            printf "Setup for %s\n\n" "$os_name"
-            setup_gentoo "$user_input" || return 1
-            ;;
-        *)
-            printf "%s is not supported at this time\n" "$os_name"
-            return 1
-            ;;
-    esac
+    printf "Setup for %s\n\n" "$os_name"
+    setup_gentoo "$user_input" || return 1
 
     return 0
 }
@@ -501,11 +345,13 @@ draw_header
 if [ "$1" = files ]; then
     echo "Copying files..."
     [ ! -d "$cache_dir" ] && { mkdir -p "$cache_dir" || return 1; }
+
     cp -r . "$cache_dir" &&
 
     if install_home &&
     install_config &&
     install_bin &&
+    install_portage &&
     cleanup; then
         echo "Done" &&
         exit 0
