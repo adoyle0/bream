@@ -1,4 +1,4 @@
-/* @import "../../.cache/wal/colors-waybar.css"; */
+@import "../../.cache/wal/colors-waybar.css";
 
 * {
   font-family: monospace;
@@ -21,26 +21,20 @@ button {
   border-radius: 0;
 }
 
-/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
-button:hover {
+#workspaces button {
   background: inherit;
-  box-shadow: inset 0 -3px @color2;
-}
-
-#tags {
-  background-color: @background;
-}
-
-#tags button.occupied {
   box-shadow: inset 0 -3px @color3;
 }
 
-#tags button.focused {
+#workspaces button.hover {
   background-color: @color1;
+}
+
+#workspaces button.active {
   box-shadow: inset 0 -3px @foreground;
 }
 
-#tags button.urgent {
+#workspaces button.urgent {
   color: red;
 }
 

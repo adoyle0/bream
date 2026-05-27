@@ -9,7 +9,7 @@
 
     "modules-left": ["ext/workspaces"],
     "modules-center": ["dwl/window"],
-    "modules-right": ["pulseaudio", "cpu", "memory", "battery", "tray", "clock"],
+    "modules-right": ["pulseaudio", "cpu", "memory", "battery", "network", "tray", "clock"],
 
 
     // modules config
@@ -41,10 +41,10 @@
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-ethernet": "{ifname} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}"
         },
 
     "cpu": {

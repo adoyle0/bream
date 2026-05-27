@@ -22,3 +22,5 @@ media-plugins/alsa-plugins pulseaudio
 x11-libs/cairo X
 x11-libs/libxkbcommon X
 x11-libs/pango X
+
+gui-apps/waybar pulseaudio network
