@@ -43,7 +43,6 @@ install_base_gentoo() {
         fish \
         dev-vcs/git \
         gnome-keyring \
-        kitty-terminfo \
         libsecret \
         man-db \
         man-pages \
@@ -152,8 +151,7 @@ install_gui_gentoo() {
         dunst \
         mangowm \
         polkit \
-        kitty \
-        kitty-shell-integration \
+        foot \
         pipewire \
         awww \
         uwsm \
