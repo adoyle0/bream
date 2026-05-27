@@ -24,3 +24,4 @@ x11-libs/libxkbcommon X
 x11-libs/pango X
 
 gui-apps/waybar pulseaudio network
+media-fonts/nerdfonts commitmono noto
