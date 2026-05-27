@@ -1,4 +1,4 @@
-*/* dbus networkmanager zstd zlib brotli lzma threads
+*/* dbus networkmanager zlib threads
 
 */* pipewire policykit wayland gtk -kde
 media-video/pipewire sound-server pulseaudio pipewire-alsa
