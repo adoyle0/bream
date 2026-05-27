@@ -3,7 +3,7 @@
 */* pipewire policykit wayland gtk -kde
 media-video/pipewire sound-server pulseaudio pipewire-alsa
 
-*/* jpeg webp tiff png ffmpeg
+*/* jpeg webp tiff png ffmpeg tray appindicator
 app-text/poppler cairo
 media-libs/babl lcms
 media-libs/gegl cairo lcms
@@ -12,6 +12,7 @@ media-video/pipewire extra
 app-text/xmlto text
 dev-cpp/cairomm X
 dev-cpp/gtkmm X
+dev-libs/libdbusmenu gtk3
 dev-libs/newt python
 media-libs/freetype harfbuzz
 media-libs/libglvnd X
