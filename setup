@@ -166,22 +166,28 @@ install_gui_gentoo() {
 
     # Mango setup
     sudo emerge -u \
+        awww \
         cliphist \
         dunst \
-        mangowm \
-        polkit \
         foot \
+        grim \
+        mangowm \
         pipewire \
-        awww \
+        polkit \
+        satty \
+        slurp \
         uwsm \
-        wl-clip-persist \
         waybar \
+        wayfreeze \
         wireplumber \
+        wl-clip-persist \
         wofi \
         xdg-desktop-portal \
         xdg-desktop-portal-gtk \
         xdg-desktop-portal-wlr \
         &&
+
+    mkdir -P "$HOME"/Pictures/Screenshots
 
     # Set dark theme
     # Unset and then reset to ensure it sticks in case dconf doesn't exist
