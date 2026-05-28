@@ -144,14 +144,24 @@ install_gui_gentoo() {
 
     sudo emerge -u \
         acpi \
+        fontawesome \
         gnome-themes-standard \
         librewolf-bin \
+        nerdfonts \
         noto \
         noto-cjk \
         noto-emoji \
         playerctl \
         wallust \
         zathura \
+        &&
+
+    sudo eselect fontconfig enable \
+        66-noto-mono.conf \
+        66-noto-sans.conf \
+        66-noto-serif.conf \
+        70-noto-cjk.conf \
+        75-noto-emoji-fallback.conf \
         &&
 
     # Mango setup
