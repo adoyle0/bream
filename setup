@@ -88,14 +88,14 @@ install_base_gentoo() {
 }
 
 init_browser() {
-    echo "Setting default browser..."
+    if ! [ "$(xdg-settings get default-web-browser)" = "librewolf-bin.desktop" ]; then
+        echo "Setting default browser..."
 
-    if ! "$BROWSER" = "librewolf"; then
         case "$SHELL" in
             *bash)
                 # Unset BROWSER because xdg gets pissy if it doesn't feel like it's the authority
                 unset BROWSER &&
-                xdg-settings set default-web-browser librewolf.desktop &&
+                xdg-settings set default-web-browser librewolf-bin.desktop &&
                 # Set it anyway
                 export BROWSER=librewolf || return 1
                 ;;

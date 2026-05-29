@@ -80,7 +80,7 @@ if status is-login
     set -gx NDK_HOME $ANDROID_HOME/ndk/(ls -1 $ANDROID_HOME/ndk)
 
     # Default programs
-    set -gx BROWSER librewolf
+    set -gx BROWSER librewolf-bin
     set -gx EDITOR nvim
     set -gx PAGER "bat -p"
     set -gx TERMINAL kitty
