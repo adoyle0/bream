@@ -91,18 +91,11 @@ init_browser() {
     if ! [ "$(xdg-settings get default-web-browser)" = "librewolf-bin.desktop" ]; then
         echo "Setting default browser..."
 
-        case "$SHELL" in
-            *bash)
-                # Unset BROWSER because xdg gets pissy if it doesn't feel like it's the authority
-                unset BROWSER &&
-                xdg-settings set default-web-browser librewolf-bin.desktop &&
-                # Set it anyway
-                export BROWSER=librewolf || return 1
-                ;;
-            *)
-                printf "%s is not supported at this time\n" "$SHELL"
-                ;;
-        esac
+        # Unset BROWSER because xdg gets pissy if it doesn't feel like it's the authority
+        unset BROWSER &&
+        xdg-settings set default-web-browser librewolf-bin.desktop &&
+        # Set it anyway
+        export BROWSER=librewolf-bin || return 1
     fi
 
     return 0
