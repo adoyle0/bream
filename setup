@@ -46,6 +46,7 @@ install_base_gentoo() {
         libsecret \
         man-db \
         man-pages \
+        mold \
         mosh \
         rsync \
         sl \
@@ -211,6 +212,7 @@ install_extras_gentoo() {
         inkscape \
         telegram-desktop-bin \
         thunderbird-bin \
+        yt-dlp \
         &&
 
     return 0
