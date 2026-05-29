@@ -200,7 +200,11 @@ install_gui_gentoo() {
 }
 
 install_extras_gentoo() {
+    sudo eselect repository enable another-brave-overlay
+    sudo emerge --sync another-brave-overlay
+
     sudo emerge -u \
+        brave \
         discord \
         element-desktop-bin \
         gimp \
