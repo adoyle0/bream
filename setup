@@ -205,7 +205,7 @@ install_extras_gentoo() {
     sudo emerge --sync another-brave-overlay
 
     sudo emerge -u \
-        brave \
+        brave-browser \
         discord \
         element-desktop-bin \
         gimp \
