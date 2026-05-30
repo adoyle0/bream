@@ -1,0 +1,5 @@
+llvm-core/clang bream-use-ccache.conf
+llvm-core/llvm bream-use-ccache.conf
+net-libs/nodejs bream-use-ccache.conf
+sys-devel/gcc bream-use-ccache.conf
+sys-libs/glibc bream-use-ccache.conf

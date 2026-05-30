@@ -38,6 +38,7 @@ install_base_gentoo() {
         bat \
         btop \
         byobu \
+        ccache \
         coreutils \
         eselect-repository \
         fish \
