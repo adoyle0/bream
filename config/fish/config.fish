@@ -75,17 +75,6 @@ if status is-login
     # Disable default greeting message
     set -U fish_greeting
 
-    # Android stuff for tauri
-    set -gx ANDROID_HOME $HOME/Android/Sdk
-    set -gx NDK_HOME $ANDROID_HOME/ndk/(ls -1 $ANDROID_HOME/ndk)
-
-    # Default programs
-    set -gx BROWSER librewolf-bin
-    set -gx EDITOR nvim
-    set -gx PAGER "bat -p"
-    set -gx TERMINAL kitty
-    set -gx VISUAL nvim
-
     # Make fzf easier on the eyes
     set -gx FZF_DEFAULT_OPTS "--layout=reverse --height 40%"
 
