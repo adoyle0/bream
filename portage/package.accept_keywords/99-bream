@@ -1,14 +1,1 @@
-app-misc/cliphist ~amd64
-app-misc/yazi ~amd64
-app-shells/zoxide ~amd64
-gui-apps/awww ~amd64
-gui-apps/satty ~amd64
-gui-apps/uwsm ~amd64
-gui-apps/wayfreeze **
-gui-apps/wl-clip-persist ~amd64
-gui-libs/scenefx ~amd64
-gui-wm/mangowm ~amd64
-media-fonts/nerdfonts ~amd64
-net-im/element-desktop-bin ~amd64
-net-im/telegram-desktop-bin ~amd64
-x11-misc/wallust ~amd64
+*/* ~amd64

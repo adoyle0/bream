@@ -33,11 +33,11 @@ fi
 install_base_gentoo() {
     echo "Installing base..."
 
+    # Base
     sudo emerge -u \
         bat \
         btop \
         byobu \
-        llvm-core/clang \
         coreutils \
         eselect-repository \
         fish \
@@ -46,7 +46,6 @@ install_base_gentoo() {
         libsecret \
         man-db \
         man-pages \
-        mold \
         mosh \
         rsync \
         sl \
@@ -55,6 +54,13 @@ install_base_gentoo() {
         unrar \
         unzip \
         wget \
+        &&
+
+    # Base dev
+    sudo emerge -u \
+        llvm-core/clang \
+        llvm-core/llvm \
+        mold \
         &&
 
     # Neovim and deps
@@ -66,8 +72,11 @@ install_base_gentoo() {
         nodejs \
         ripgrep \
         rubygems \
+        rustup \
         tree-sitter-cli \
         &&
+
+    sudo eselect editor nvim
 
     # Yazi and deps
     sudo emerge -u \

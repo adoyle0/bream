@@ -75,6 +75,9 @@ if status is-login
     # Disable default greeting message
     set -U fish_greeting
 
+    # Set default browser
+    set -gx BROWSER librewolf-bin
+
     # Make fzf easier on the eyes
     set -gx FZF_DEFAULT_OPTS "--layout=reverse --height 40%"
 
@@ -89,11 +92,9 @@ if status is-login
     end
 end
 
-# Add cargo bin to path
-fish_add_path -gmaP ~/.cargo/bin/
-
-# Add .local bin to path
-fish_add_path -gmaP ~/.local/bin/
+# PREPEND local bin dirs to path to allow separate user and system toolchains
+fish_add_path -gmpP ~/.cargo/bin/
+fish_add_path -gmpP ~/.local/bin/
 
 # Use vi bindings
 fish_vi_key_bindings
