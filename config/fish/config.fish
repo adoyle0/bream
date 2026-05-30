@@ -85,13 +85,10 @@ if status is-login
     set -gx XZ_DEFAULTS "-T 0"
 
     # Start hyprland at login
-    if test -e /usr/bin/mango
-        if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-            exec uwsm start mango.desktop
-        end
+    if test -z $DISPLAY; and test (tty) = /dev/tty1
+        exec uwsm start mango.desktop
     end
 end
-
 # PREPEND local bin dirs to path to allow separate user and system toolchains
 fish_add_path -gmpP ~/.cargo/bin/
 fish_add_path -gmpP ~/.local/bin/
