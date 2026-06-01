@@ -37,7 +37,6 @@ install_base_gentoo() {
     sudo emerge -u \
         bat \
         btop \
-        byobu \
         ccache \
         coreutils \
         eselect-repository \
@@ -66,6 +65,11 @@ install_base_gentoo() {
 
     # Neovim and deps
     sudo emerge -u \
+        dev-go/gopls \
+        dev-lua/luacheck \
+        dev-python/black \
+        dev-python/isort \
+        dev-util/shellcheck-bin \
         fzf \
         go \
         luarocks \
@@ -77,7 +81,7 @@ install_base_gentoo() {
         tree-sitter-cli \
         &&
 
-    sudo eselect editor nvim
+    sudo eselect editor set nvim
 
     # Yazi and deps
     sudo emerge -u \

@@ -117,25 +117,55 @@ return {
       end,
     })
 
+    local ensure_installed = {
+      'bashls',
+      'beautysh',
+      'cssls',
+      'docker_compose_language_service',
+      'dockerls',
+      'eslint_d',
+      'html',
+      'htmlbeautifier',
+      'jsonls',
+      'markdownlint',
+      'mdformat',
+      'pbls',
+      'prettier',
+      'prettierd',
+      'pyright',
+      'rustywind',
+      'shellharden',
+      'stylua',
+      'tailwindcss',
+      'taplo',
+      'ts_ls',
+      'yamlfix',
+      'yamlls',
+      'zls',
+    }
+
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
     --  See `:help lsp-config` for information about keys and how to configure
     ---@type table<string, vim.lsp.Config>
     local servers = {
       bashls = {},
+      black = {},
       clangd = {},
       cssls = {},
       docker_compose_language_service = {},
       dockerls = {},
       gopls = {},
       html = {},
+      isort = {},
       jsonls = {},
+      luacheck = {},
       markdownlint = {},
-      mutt_ls = {},
       pbls = {},
       pyright = {},
-      tailwindcss = {},
+      shellcheck = {},
       stylua = {},
+      tailwindcss = {},
       ts_ls = {},
       yamlls = {},
       zls = {},
@@ -171,33 +201,6 @@ return {
         },
       },
     }
-
-    -- Ensure the servers and tools above are installed
-    --
-    -- To check the current status of installed tools and/or manually install
-    -- other tools, you can run
-    --    :Mason
-    --
-    -- You can press `g?` for help in this menu.
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      'beautysh',
-      'black',
-      'eslint_d',
-      'htmlbeautifier',
-      'isort',
-      'luacheck',
-      'mdformat',
-      -- 'nginx-language-server', broken: https://github.com/pappasam/nginx-language-server/issues/24
-      'pbls',
-      'prettier',
-      'prettierd',
-      'rustywind',
-      'shellcheck',
-      'shellharden',
-      'taplo',
-      'yamlfix',
-    })
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
