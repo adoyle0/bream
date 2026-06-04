@@ -23,21 +23,35 @@ install() {
 wipe_old_files() {
     echo "Cleaning up..."
 
-    rm -rfv "$HOME"/*~ \
+    sudo rm -rf "$HOME"/*~ \
         "$HOME"/.bash* \
         "$HOME"/.config/*~ \
         "$HOME"/.config/alacritty \
         "$HOME"/.config/android \
         "$HOME"/.config/awesome \
+        "$HOME"/.config/btop \
+        "$HOME"/.config/fish \
+        "$HOME"/.config/foot \
+        "$HOME"/.config/fontconfig \
         "$HOME"/.config/gnupg \
         "$HOME"/.config/gtk-2.0 \
+        "$HOME"/.config/gtk-3.0 \
+        "$HOME"/.config/gtk-4.0 \
+        "$HOME"/.config/hypr \
+        "$HOME"/.config/kitty \
+        "$HOME"/.config/mango \
         "$HOME"/.config/nnn \
         "$HOME"/.config/nvim \
+        "$HOME"/.config/paru \
         "$HOME"/.config/picom.conf \
         "$HOME"/.config/shell \
+        "$HOME"/.config/tmux \
+        "$HOME"/.config/wallust \
+        "$HOME"/.config/waybar \
         "$HOME"/.config/x11 \
+        "$HOME"/.config/xdg-desktop-portal \
         "$HOME"/.doors \
-        "$HOME"/.local/bin \
+        "$HOME"/.local/bin/bream \
         "$HOME"/.local/share/cargo \
         "$HOME"/.local/share/go \
         "$HOME"/.local/share/history \
@@ -46,6 +60,8 @@ wipe_old_files() {
         "$HOME"/.local/share/password-store \
         "$HOME"/.profile \
         "$HOME"/.xinitrc \
+        /etc/issue \
+        /etc/portage/env/*/bream* \
         || exit 1
 
     echo "Done. Run setup again to replace deleted files."

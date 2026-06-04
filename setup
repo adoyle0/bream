@@ -35,13 +35,15 @@ install_base_gentoo() {
 
     # Base
     sudo emerge -u \
+        app-arch/tar \
+        app-text/tree \
         bat \
         btop \
         ccache \
         coreutils \
+        dev-vcs/git \
         eselect-repository \
         fish \
-        dev-vcs/git \
         gnome-keyring \
         libsecret \
         man-db \
@@ -49,12 +51,14 @@ install_base_gentoo() {
         mosh \
         rsync \
         sl \
-        app-arch/tar \
-        app-text/tree \
+        ufw \
         unrar \
         unzip \
         wget \
         &&
+
+    sudo ufw allow ssh &&
+    sudo systemctl enable --now ufw &&
 
     # Base dev
     sudo emerge -u \
@@ -77,11 +81,27 @@ install_base_gentoo() {
         nodejs \
         ripgrep \
         rubygems \
-        rustup \
         tree-sitter-cli \
         &&
 
     sudo eselect editor set nvim
+
+    # Dev stuff
+    sudo emerge -u \
+        rustup \
+        &&
+
+    rustup-init -y &&
+    rustup component add rust-analyzer &&
+    rustup toolchain install nightly &&
+    rustup target add wasm32-unknown-unknown &&
+
+    cargo install cargo-leptos &&
+    cargo install cargo-generate &&
+    cargo install leptosfmt &&
+    cargo install trunk &&
+    cargo install tauri-cli &&
+    cargo install wasm-bindgen-cli &&
 
     # Yazi and deps
     sudo emerge -u \
