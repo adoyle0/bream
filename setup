@@ -88,6 +88,7 @@ install_base() {
         rustup \
         &&
 
+    rustup default stable &&
     rustup component add rust-analyzer &&
     rustup toolchain install nightly &&
     rustup target add wasm32-unknown-unknown &&
