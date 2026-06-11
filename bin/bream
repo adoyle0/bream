@@ -8,6 +8,7 @@ Usage: bream [OPTION]
 Options:
   clean       Cleans up old, unused, and conflicting files
   install     Installs bream
+  mirrors     Rates available mirrors and saves a sorted list
   setbg       Generates a color scheme from a random image in ~/Pictures/Wallpapers
         -r      Re-runs on last image
   uninstall   Uninstalls bream
@@ -90,6 +91,27 @@ setbg() {
     dunstctl reload
 }
 
+mirrors() {
+    . /etc/os-release
+    OS=$NAME
+
+    case "$OS" in
+        "Arch Linux")
+            rate-mirrors arch | sudo tee /etc/pacman.d/mirrorlist
+            ;;
+        "Arch Linux ARM")
+            rate-mirrors archarm | sudo tee /etc/pacman.d/mirrorlist
+            ;;
+        "Manjaro Linux")
+            rate-mirrors manjaro | sudo tee /etc/pacman.d/mirrorlist
+            ;;
+        *)
+            echo "$OS is not supported by this script at this time."
+            exit 1
+            ;;
+    esac
+}
+
 uninstall() {
     rm -rf "$HOME"/.local/bin/bream
 
@@ -109,6 +131,10 @@ main() {
                 ;;
             help|-h|--help)
                 usage
+                break
+                ;;
+            mirrors)
+                mirrors
                 break
                 ;;
             uninstall)

@@ -75,8 +75,12 @@ if status is-login
     # Disable default greeting message
     set -U fish_greeting
 
-    # Set default browser
-    set -gx BROWSER librewolf-bin
+    # Set defaults browser
+    set -gx BROWSER librewolf
+    set -gx EDITOR nvim
+    set -gx PAGER "bat -p"
+    set -gx TERMINAL foot
+    set -gx VISUAL nvim
 
     # Make fzf easier on the eyes
     set -gx FZF_DEFAULT_OPTS "--layout=reverse --height 40%"
@@ -86,7 +90,7 @@ if status is-login
 
     # Start hyprland at login
     if test -z $DISPLAY; and test (tty) = /dev/tty1
-        exec uwsm start mango.desktop
+        exec uwsm start hyprland.desktop
     end
 end
 # PREPEND local bin dirs to path to allow separate user and system toolchains

@@ -30,27 +30,43 @@ if [ "$1" = local ]; then
     local_repo=0
 fi
 
-install_base_gentoo() {
+ensure_paru() {
+    if [ ! "$(command -v paru)" ]; then
+        echo "Installing paru..."
+
+        local paru_dir="$cache_dir"/paru
+
+        # git clone will return 0 even on error so clean up ahead of time
+        rm -rf "$paru_dir"
+
+        git clone https://aur.archlinux.org/paru.git "$paru_dir" &&
+        cd "$paru_dir" &&
+        makepkg -si --noconfirm || return 1
+    fi
+
+    return 0
+}
+
+install_base() {
     echo "Installing base..."
 
     # Base
-    sudo emerge -u \
-        app-arch/tar \
-        app-text/tree \
+
+    paru -S --needed --noconfirm --pgpfetch \
+        archlinux-contrib \
         bat \
         btop \
-        ccache \
         coreutils \
-        dev-vcs/git \
-        eselect-repository \
-        fish \
         gnome-keyring \
         libsecret \
         man-db \
         man-pages \
         mosh \
+        pacman-contrib \
         rsync \
         sl \
+        tar \
+        tree \
         ufw \
         unrar \
         unzip \
@@ -60,58 +76,60 @@ install_base_gentoo() {
     sudo ufw allow ssh &&
     sudo systemctl enable --now ufw &&
 
+    # Fish and deps
+    paru -S --needed --noconfirm --pgpfetch \
+        fish \
+        pkgfile \
+        &&
+
     # Base dev
-    sudo emerge -u \
-        llvm-core/clang \
-        llvm-core/llvm \
+    paru -S --needed --noconfirm --pgpfetch \
+        cargo-generate \
+        cargo-leptos \
+        cargo-tauri \
+        clang \
+        git \
+        kondo \
         mold \
+        rustup \
+        tailwindcss-bin \
+        trunk \
+        wasm-bindgen \
         &&
 
     # Neovim and deps
-    sudo emerge -u \
-        dev-go/gopls \
-        dev-lua/luacheck \
-        dev-python/black \
-        dev-python/isort \
-        dev-util/shellcheck-bin \
+    paru -S --needed --noconfirm --pgpfetch \
         fzf \
         go \
+        gopls \
+        luacheck \
         luarocks \
         neovim \
         nodejs \
+        python-black \
+        python-isort \
         ripgrep \
         rubygems \
+        shellcheck \
         tree-sitter-cli \
+        tree-sitter-grammars \
         &&
 
-    sudo eselect editor set nvim
-
-    # Dev stuff
-    sudo emerge -u \
-        rustup \
-        &&
-
-    rustup-init -y &&
     rustup component add rust-analyzer &&
     rustup toolchain install nightly &&
     rustup target add wasm32-unknown-unknown &&
 
-    cargo install cargo-leptos &&
-    cargo install cargo-generate &&
     cargo install leptosfmt &&
-    cargo install trunk &&
-    cargo install tauri-cli &&
-    cargo install wasm-bindgen-cli &&
 
     # Yazi and deps
-    sudo emerge -u \
+    paru -S --needed --noconfirm --pgpfetch \
         7zip \
         chafa\
         fd \
         ffmpeg \
         fzf \
         imagemagick \
-        app-misc/jq \
+        jq \
         poppler \
         ripgrep \
         yazi \
@@ -122,14 +140,14 @@ install_base_gentoo() {
 }
 
 init_browser() {
-    if ! [ "$(xdg-settings get default-web-browser)" = "librewolf-bin.desktop" ]; then
+    if ! [ "$(xdg-settings get default-web-browser)" = "librewolf.desktop" ]; then
         echo "Setting default browser..."
 
         # Unset BROWSER because xdg gets pissy if it doesn't feel like it's the authority
         unset BROWSER &&
-        xdg-settings set default-web-browser librewolf-bin.desktop &&
+        xdg-settings set default-web-browser librewolf.desktop &&
         # Set it anyway
-        export BROWSER=librewolf-bin || return 1
+        export BROWSER=librewolf || return 1
     fi
 
     return 0
@@ -166,53 +184,46 @@ init_wal() {
     return 0
 }
 
-install_gui_gentoo() {
-    sudo eselect repository add librewolf git https://codeberg.org/librewolf/gentoo.git
-    sudo emaint sync -r librewolf
+install_gui() {
 
-    sudo emerge -u \
+    paru -S --needed --noconfirm --pgpfetch \
         acpi \
-        fontawesome \
-        gnome-themes-standard \
+        bluez \
+        gnome-themes-extra \
         librewolf-bin \
-        nerdfonts \
-        noto \
-        noto-cjk \
-        noto-emoji \
+        noto-fonts \
+        noto-fonts-cjk \
+        noto-fonts-emoji \
+        noto-fonts-extra \
+        otf-commit-mono-nerd \
+        otf-font-awesome \
         playerctl \
+        python-pywalfox-librewolf \
+        trivalent-bin \
+        ttf-noto-nerd \
         wallust \
         zathura \
         &&
 
-    sudo eselect fontconfig enable \
-        66-noto-mono.conf \
-        66-noto-sans.conf \
-        66-noto-serif.conf \
-        70-noto-cjk.conf \
-        75-noto-emoji-fallback.conf \
-        &&
-
-    # Mango setup
-    sudo emerge -u \
+    # Hyprland setup
+    paru -S --needed --noconfirm --pgpfetch \
         awww \
         cliphist \
         dunst \
+        focal-hyprland-git \
         foot \
-        grim \
-        mangowm \
+        hyprland \
+        hyprpolkitagent \
+        libappindicator \
         pipewire \
-        polkit \
-        satty \
-        slurp \
         uwsm \
         waybar \
-        wayfreeze \
         wireplumber \
         wl-clip-persist \
         wofi \
         xdg-desktop-portal \
         xdg-desktop-portal-gtk \
-        xdg-desktop-portal-wlr \
+        xdg-desktop-portal-hyprland \
         &&
 
     mkdir -P "$HOME"/Pictures/Screenshots
@@ -227,18 +238,15 @@ install_gui_gentoo() {
     return 0
 }
 
-install_extras_gentoo() {
-    sudo eselect repository enable another-brave-overlay
-    sudo emerge --sync another-brave-overlay
-
-    sudo emerge -u \
-        brave-browser \
-        discord \
-        element-desktop-bin \
+install_extras() {
+    paru -S --needed --noconfirm --pgpfetch \
+        discord_arch_electron \
+        element-desktop-nightly-bin \
         gimp \
         inkscape \
-        telegram-desktop-bin \
-        thunderbird-bin \
+        telegram-desktop \
+        thunderbird \
+        walogram-git \
         yt-dlp \
         &&
 
@@ -305,8 +313,11 @@ install_etc() {
     return 0
 }
 
-setup_gentoo() {
-    cleanup &&
+prepare() {
+    # Enable multi-threading for xz
+    export XZ_DEFAULTS="-T 0" &&
+
+    sudo pacman -S --needed --noconfirm git base-devel clang mold &&
 
     # Make sure .cache exists
     if ! [ -d "$HOME"/.cache ]; then
@@ -324,22 +335,46 @@ setup_gentoo() {
     install_bin &&
     install_home &&
     install_config &&
+    ensure_paru &&
 
+    # Rank mirrors for SPEED
+    paru -S --needed --noconfirm --pgpfetch rate-mirrors-bin &&
+    if [ ! "$local_repo" ]; then
+        "$HOME"/.local/bin/bream mirrors
+    fi || return 1
+
+    return 0
+}
+setup() {
+    cleanup &&
+    prepare &&
+
+    # Make sure .cache exists
+    if ! [ -d "$HOME"/.cache ]; then
+        mkdir "$HOME"/.cache
+    fi &&
+
+    # Sync files
+    if [ "$local_repo" ]; then
+        cp -r . "$cache_dir"
+    else
+        git clone --branch "$git_branch" "$git_url" "$cache_dir"
+    fi &&
 
     if [ "$1" -ge 1 ]; then
-        install_base_gentoo || return 1
+        install_base || return 1
     fi &&
 
     if [ "$1" -ge 2 ]; then
-        install_gui_gentoo || return 1
+        install_gui || return 1
         init_browser &&
-        # init_pywalfox &&
+        init_pywalfox &&
         init_wallpaper &&
         init_wal || return 1
     fi &&
 
     if [ "$1" -ge 3 ]; then
-        install_extras_gentoo || return 1
+        install_extras || return 1
     fi &&
 
     install_shell &&
@@ -389,8 +424,20 @@ main() {
     . /etc/os-release
     local os_name=$NAME
 
-    printf "Setup for %s\n\n" "$os_name"
-    setup_gentoo "$user_input" || return 1
+    case "$os_name" in
+        *Arch*)
+            printf "Setup for %s\n\n" "$os_name"
+            setup_arch "$user_input" || return 1
+            ;;
+        *Manjaro*)
+            printf "Setup for %s\n\n" "$os_name"
+            setup_arch "$user_input" || return 1
+            ;;
+        *)
+            printf "%s is not supported at this time\n" "$os_name"
+            return 1
+            ;;
+    esac
 
     return 0
 }

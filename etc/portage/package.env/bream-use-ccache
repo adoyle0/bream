@@ -1,8 +1,0 @@
-llvm-core/clang bream-use-ccache.conf
-llvm-core/llvm bream-use-ccache.conf
-media-gfx/gimp bream-use-ccache.conf
-media-gfx/inkscape bream-use-ccache.conf
-net-libs/nodejs bream-use-ccache.conf
-net-libs/webkit-gtk bream-use-ccache.conf
-sys-devel/gcc bream-use-ccache.conf
-sys-libs/glibc bream-use-ccache.conf

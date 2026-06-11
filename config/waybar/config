@@ -1,23 +1,27 @@
 {
     // basics
-
     "spacing": 4,
     "reload_style_on_change": true,
-
-
     // modules layout
-
-    "modules-left": ["ext/workspaces"],
-    "modules-center": ["dwl/window"],
-    "modules-right": ["pulseaudio", "cpu", "memory", "battery", "network", "tray", "clock"],
-
-
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "battery",
+        "network",
+        "tray",
+        "clock"
+    ],
     // modules config
-
     "ext/workspaces": {
         "on-click": "activate",
     },
-
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
@@ -33,11 +37,14 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
-            },
-        "on-click": "pavucontrol"
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
-
+        "on-click": "pavucontrol"
+    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
@@ -45,22 +52,18 @@
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
         "format-alt": "{ifname}: {ipaddr}"
-        },
-
+    },
     "cpu": {
         "format": " {usage}%",
         "tooltip": false
-        },
-
+    },
     "memory": {
         "format": " {}%"
-        },
-
+    },
     "tray": {
         // "icon-size": 21,
         "spacing": 10
-        },
-
+    },
     "battery": {
         "states": {
             // "good": 95,
@@ -73,12 +76,17 @@
         "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-        },
-
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
     "clock": {
         "format": "{:%I:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
-        },
+    },
 }

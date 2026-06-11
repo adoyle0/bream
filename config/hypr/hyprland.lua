@@ -1,0 +1,72 @@
+require 'monitors'
+require 'rules'
+require 'input'
+require 'animations'
+require 'binds'
+
+hl.monitor {
+  output = '',
+  mode = 'preferred',
+  position = 'auto',
+  scale = 'auto',
+}
+
+hl.on('hyprland.start', function()
+  hl.exec_cmd 'uwsm-app awww-daemon'
+  hl.exec_cmd 'uwsm-app waybar'
+  hl.exec_cmd 'uwsm-app wl-clip-persist --clipboard regular'
+  hl.exec_cmd 'uwsm-app wl-paste --type image --watch cliphist store'
+  hl.exec_cmd 'uwsm-app wl-paste --type text --watch cliphist store'
+  hl.exec_cmd 'awww img "$(cat ~./cache/wal/wal)"'
+end)
+
+hl.env('ELECTRON_OZONE_PLATFORM_HINT', 'auto')
+hl.env('HYPRCURSOR_SIZE', '24')
+hl.env('XCURSOR_SIZE', '24')
+
+hl.config {
+  general = {
+    allow_tearing = false,
+    border_size = 2,
+    gaps_in = 5,
+    gaps_out = 10,
+    layout = 'master',
+    resize_on_border = false,
+
+    -- col = {
+    -- 	active_border = { colors = { "rgba($color14ee)", "rgba($color6ee)" }, angle = 45 },
+    -- 	inactive_border = { colors = { "rgba($color9ee)", "rgba($color1ee)" }, angle = 45 },
+    -- },
+  },
+
+  decoration = {
+    rounding = 5,
+    rounding_power = 2,
+    active_opacity = 1.0,
+    inactive_opacity = 1.0,
+
+    shadow = {
+      enabled = true,
+      range = 40,
+      render_power = 4,
+      -- color = "rgba($backgroundee)",
+    },
+
+    blur = {
+      enabled = true,
+      size = 3,
+      passes = 1,
+      vibrancy = 0.1696,
+    },
+  },
+
+  master = {
+    new_status = 'master',
+    new_on_top = true,
+  },
+
+  misc = {
+    force_default_wallpaper = 0,
+    disable_hyprland_logo = true,
+  },
+}
