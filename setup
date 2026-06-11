@@ -83,6 +83,14 @@ install_base() {
         &&
 
     # Base dev
+    yes | paru -S --needed --noconfirm --pgpfetch \
+        rustup \
+        &&
+
+    rustup component add rust-analyzer &&
+    rustup toolchain install nightly &&
+    rustup target add wasm32-unknown-unknown &&
+
     paru -S --needed --noconfirm --pgpfetch \
         cargo-generate \
         cargo-leptos \
@@ -91,7 +99,6 @@ install_base() {
         git \
         kondo \
         mold \
-        rustup \
         tailwindcss-bin \
         trunk \
         wasm-bindgen \
@@ -115,9 +122,6 @@ install_base() {
         tree-sitter-grammars \
         &&
 
-    rustup component add rust-analyzer &&
-    rustup toolchain install nightly &&
-    rustup target add wasm32-unknown-unknown &&
 
     cargo install leptosfmt &&
 
