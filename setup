@@ -427,11 +427,11 @@ main() {
     case "$os_name" in
         *Arch*)
             printf "Setup for %s\n\n" "$os_name"
-            setup_arch "$user_input" || return 1
+            setup "$user_input" || return 1
             ;;
         *Manjaro*)
             printf "Setup for %s\n\n" "$os_name"
-            setup_arch "$user_input" || return 1
+            setup "$user_input" || return 1
             ;;
         *)
             printf "%s is not supported at this time\n" "$os_name"
