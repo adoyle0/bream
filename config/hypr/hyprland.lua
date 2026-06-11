@@ -8,16 +8,16 @@ hl.monitor {
   output = '',
   mode = 'preferred',
   position = 'auto',
-  scale = 'auto',
+  scale = 1,
 }
 
 hl.on('hyprland.start', function()
-  hl.exec_cmd 'uwsm-app awww-daemon'
-  hl.exec_cmd 'uwsm-app waybar'
-  hl.exec_cmd 'uwsm-app wl-clip-persist --clipboard regular'
-  hl.exec_cmd 'uwsm-app wl-paste --type image --watch cliphist store'
-  hl.exec_cmd 'uwsm-app wl-paste --type text --watch cliphist store'
-  hl.exec_cmd 'awww img "$(cat ~./cache/wal/wal)"'
+  hl.exec_cmd 'uwsm app -- awww-daemon'
+  hl.exec_cmd 'uwsm app -- waybar'
+  hl.exec_cmd 'uwsm app -- wl-clip-persist --clipboard regular'
+  hl.exec_cmd 'uwsm app -- wl-paste --type image --watch cliphist store'
+  hl.exec_cmd 'uwsm app -- wl-paste --type text --watch cliphist store'
+  hl.exec_cmd 'uwsm app -- awww img "$(cat ~./cache/wal/wal)"'
 end)
 
 hl.env('ELECTRON_OZONE_PLATFORM_HINT', 'auto')

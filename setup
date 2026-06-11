@@ -218,6 +218,7 @@ install_gui() {
         dunst \
         focal-hyprland-git \
         foot \
+        foot-terminfo \
         hyprland \
         hyprpolkitagent \
         libappindicator \

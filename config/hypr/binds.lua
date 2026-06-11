@@ -30,29 +30,29 @@ hl.bind(Mod .. ' + SHIFT + E', hl.dsp.exec_cmd 'uwsm stop') -- Exit hyprland
 hl.bind(Mod .. ' + SHIFT + P', hl.dsp.exec_cmd 'bream setbg')
 
 -- Screenshot and screen record
-hl.bind('Print', hl.dsp.exec_cmd 'uwsm-app focal image --rofi')
-hl.bind('SHIFT + Print', hl.dsp.exec_cmd 'uwsm-app focal video --rofi')
+hl.bind('Print', hl.dsp.exec_cmd 'uwsm app -- focal image --rofi')
+hl.bind('SHIFT + Print', hl.dsp.exec_cmd 'uwsm app -- focal video --rofi')
 
 -- Launcher
-hl.bind(Mod .. ' + C', hl.dsp.exec_cmd('uwsm-app ' .. matrix))
-hl.bind(Mod .. ' + D', hl.dsp.exec_cmd('uwsm-app ' .. discord))
-hl.bind(Mod .. ' + E', hl.dsp.exec_cmd('uwsm-app ' .. email))
-hl.bind(Mod .. ' + G', hl.dsp.exec_cmd('uwsm-app ' .. game))
-hl.bind(Mod .. ' + I', hl.dsp.exec_cmd('uwsm-app ' .. image_editor))
-hl.bind(Mod .. ' + M', hl.dsp.exec_cmd('uwsm-app ' .. music))
-hl.bind(Mod .. ' + R', hl.dsp.exec_cmd('uwsm-app ' .. menu))
-hl.bind(Mod .. ' + V', hl.dsp.exec_cmd('uwsm-app ' .. virtual_machine))
-hl.bind(Mod .. ' + W', hl.dsp.exec_cmd('uwsm-app ' .. browser))
-hl.bind(Mod .. ' + Return', hl.dsp.exec_cmd('uwsm-app ' .. terminal))
+hl.bind(Mod .. ' + C', hl.dsp.exec_cmd('uwsm app -- ' .. matrix))
+hl.bind(Mod .. ' + D', hl.dsp.exec_cmd('uwsm app -- ' .. discord))
+hl.bind(Mod .. ' + E', hl.dsp.exec_cmd('uwsm app -- ' .. email))
+hl.bind(Mod .. ' + G', hl.dsp.exec_cmd('uwsm app -- ' .. game))
+hl.bind(Mod .. ' + I', hl.dsp.exec_cmd('uwsm app -- ' .. image_editor))
+hl.bind(Mod .. ' + M', hl.dsp.exec_cmd('uwsm app -- ' .. music))
+hl.bind(Mod .. ' + R', hl.dsp.exec_cmd('uwsm app -- ' .. menu))
+hl.bind(Mod .. ' + V', hl.dsp.exec_cmd('uwsm app -- ' .. virtual_machine))
+hl.bind(Mod .. ' + W', hl.dsp.exec_cmd('uwsm app -- ' .. browser))
+hl.bind(Mod .. ' + Return', hl.dsp.exec_cmd('uwsm app -- ' .. terminal))
 
-hl.bind(Mod .. ' + SHIFT + C', hl.dsp.exec_cmd('uwsm-app ' .. telegram))
-hl.bind(Mod .. ' + SHIFT + G', hl.dsp.exec_cmd('uwsm-app ' .. game2))
-hl.bind(Mod .. ' + SHIFT + I', hl.dsp.exec_cmd('uwsm-app ' .. image_editor2))
-hl.bind(Mod .. ' + SHIFT + W', hl.dsp.exec_cmd('uwsm-app ' .. browser2))
+hl.bind(Mod .. ' + SHIFT + C', hl.dsp.exec_cmd('uwsm app -- ' .. telegram))
+hl.bind(Mod .. ' + SHIFT + G', hl.dsp.exec_cmd('uwsm app -- ' .. game2))
+hl.bind(Mod .. ' + SHIFT + I', hl.dsp.exec_cmd('uwsm app -- ' .. image_editor2))
+hl.bind(Mod .. ' + SHIFT + W', hl.dsp.exec_cmd('uwsm app -- ' .. browser2))
 
 -- Lazy re-creation of awesomeWM help popup
-hl.bind(Mod .. ' + SHIFT + F1', hl.dsp.exec_cmd('uwsm-app ' .. terminal .. ' -e nvim -R ~/.config/hypr/binds.lua'))
-hl.bind(Mod .. ' + SHIFT + slash', hl.dsp.exec_cmd('uwsm-app ' .. terminal .. ' -e nvim -R ~/.config/hypr/keybinds.conf'))
+hl.bind(Mod .. ' + SHIFT + F1', hl.dsp.exec_cmd('uwsm app -- ' .. terminal .. ' -e nvim -R ~/.config/hypr/binds.lua'))
+hl.bind(Mod .. ' + SHIFT + slash', hl.dsp.exec_cmd('uwsm app -- ' .. terminal .. ' -e nvim -R ~/.config/hypr/keybinds.conf'))
 
 -- Focus and move windows within workspace
 -- hl.bind(Mod .. " + H", movefocus, l)
