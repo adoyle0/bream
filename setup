@@ -182,9 +182,9 @@ init_wallpaper() {
 
 init_wal() {
     if ! [ -d "$HOME"/.cache/wal ]; then
-        bream setbg
+        "$HOME"/.local/bin/bream setbg
     else
-        bream setbg -r
+        "$HOME"/.local/bin/bream setbg -r
     fi || return 1
 
     return 0
