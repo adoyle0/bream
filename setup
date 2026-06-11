@@ -66,6 +66,7 @@ install_base() {
         rsync \
         sl \
         tar \
+        tmux \
         tree \
         ufw \
         unrar \
