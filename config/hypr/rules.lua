@@ -29,3 +29,13 @@ hl.window_rule {
   move = '20 monitor_h-120',
   float = true,
 }
+
+hl.window_rule {
+  name = 'position pips',
+  match = { title = 'Picture-in-Picture' },
+
+  float = true,
+  move = 'monitor_w-415 95',
+  no_initial_focus = true,
+  size = { 400, 225 },
+}
