@@ -1,8 +1,9 @@
-require 'monitors'
-require 'rules'
-require 'input'
 require 'animations'
 require 'binds'
+require 'input'
+require 'monitors'
+require 'rules'
+require 'zoom'
 
 hl.monitor {
   output = '',

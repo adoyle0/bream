@@ -19,8 +19,17 @@
         "clock"
     ],
     // modules config
-    "ext/workspaces": {
-        "on-click": "activate",
+    "hyprland/window": {
+        "separate-outputs": true,
+        "icon": true,
+        "icon-size": 16
+    },
+    "custom/focal": {
+        "exec": "uwsm app -- focal-waybar --recording 'REC'",
+        "format": "{}",
+        // interval to poll for updated recording status
+        "interval": 1,
+        "on-click": "uwsm app -- focal video --stop"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
@@ -43,7 +52,7 @@
                 ""
             ]
         },
-        "on-click": "pavucontrol"
+        "on-click": "uwsm app -- pavucontrol"
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
@@ -88,5 +97,5 @@
         "format": "{:%I:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
-    },
+    }
 }
