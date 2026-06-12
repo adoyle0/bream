@@ -51,12 +51,12 @@ install_base() {
     echo "Installing base..."
 
     # Base
-
     paru -S --needed --noconfirm --pgpfetch \
         archlinux-contrib \
         bat \
         btop \
         coreutils \
+        earlyoom \
         gnome-keyring \
         libsecret \
         man-db \
@@ -74,6 +74,7 @@ install_base() {
         wget \
         &&
 
+    sudo systemctl enable --now earlyoom &&
     sudo ufw allow ssh &&
     sudo systemctl enable --now ufw &&
 
@@ -316,6 +317,10 @@ cleanup() {
 
 install_etc() {
     yes | sudo cp -r etc/* /etc/ || return 1
+
+    # Disable core dumps
+    sudo sysctl -p /etc/sysctl.d/50-coredump.conf
+    sudo systemctl daemon-reload
 
     return 0
 }
