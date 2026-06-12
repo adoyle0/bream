@@ -1,0 +1,23 @@
+--Special
+global wallpaper  = '{{wallpaper}}'
+global background = '{{background|strip}}'
+global foreground = '{{foreground|strip}}'
+global cursor     = '{{cursor|strip}}'
+
+-- Colors
+global color0  = '{{color0|strip}}'
+global color1  = '{{color1|strip}}'
+global color2  = '{{color2|strip}}'
+global color3  = '{{color3|strip}}'
+global color4  = '{{color4|strip}}'
+global color5  = '{{color5|strip}}'
+global color6  = '{{color6|strip}}'
+global color7  = '{{color7|strip}}'
+global color8  = '{{color8|strip}}'
+global color9  = '{{color9|strip}}'
+global color10 = '{{color10|strip}}'
+global color11 = '{{color11|strip}}'
+global color12 = '{{color12|strip}}'
+global color13 = '{{color13|strip}}'
+global color14 = '{{color14|strip}}'
+global color15 = '{{color15|strip}}'

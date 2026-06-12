@@ -1,3 +1,6 @@
+-- Load theme
+dofile(os.getenv 'HOME' .. '/.cache/wal/colors-hyprland.lua')
+
 require 'animations'
 require 'binds'
 require 'input'
@@ -34,10 +37,10 @@ hl.config {
     layout = 'master',
     resize_on_border = false,
 
-    -- col = {
-    -- 	active_border = { colors = { "rgba($color14ee)", "rgba($color6ee)" }, angle = 45 },
-    -- 	inactive_border = { colors = { "rgba($color9ee)", "rgba($color1ee)" }, angle = 45 },
-    -- },
+    col = {
+      active_border = { colors = { 'rgba(' .. color14 .. 'ee)', 'rgba(' .. color6 .. 'ee)' }, angle = 45 },
+      inactive_border = { colors = { 'rgba(' .. color9 .. 'ee)', 'rgba(' .. color1 .. 'ee)' }, angle = 45 },
+    },
   },
 
   decoration = {
@@ -50,7 +53,7 @@ hl.config {
       enabled = true,
       range = 40,
       render_power = 4,
-      -- color = "rgba($backgroundee)",
+      color = 'rgba(' .. background .. 'ee)',
     },
 
     blur = {
