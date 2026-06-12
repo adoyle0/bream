@@ -45,7 +45,6 @@ abbr vim nvim
 abbr vimdiff "nvim -d"
 
 # Unsorted
-abbr bb byobu
 abbr ka killall
 abbr mkd "mkdir -pv"
 abbr t "tree -L"

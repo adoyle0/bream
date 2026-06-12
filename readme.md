@@ -39,15 +39,19 @@ The meat and potatoes
 
 | Package | Description |
 | - | - |
+| [archlinux-contrib](https://github.com/archlinux/contrib) | Arch contrib scripts |
+| [bat](https://github.com/sharkdp/bat) | A cat(1) clone with wings |
 | [btop](https://github.com/aristocratos/btop) | Top++ |
-| [byobu](https://www.byobu.org/) | Comfy multiplexer (aka `bb`) |
+| [earlyoom](https://github.com/rfjakob/earlyoom) | Kill memory leaking processes earlier |
 | [fish](https://fishshell.com/) | Amazing shell with an amazing name |
 | [kondo](https://github.com/tbillington/kondo) | An awesome tool for cleaning up build artifacts |
+| [mold](https://github.com/rui314/mold) | A modern linker |
 | [mosh](https://mosh.org/) | MObile SHell, like ssh but better with a bad connection |
 | [neovim](https://github.com/neovim/neovim) | The best editor (aka `v`) |
 | [paru](https://github.com/Morganamilo/paru) | Easier to use Arch package manager that supports AUR |
 | [rate-mirrors](https://github.com/westandskif/rate-mirrors) | Arch mirror ranking tool (used by `bream mirrors`) |
-| [wild](https://github.com/davidlattimore/wild) | A much faster linker |
+| [tmux](https://github.com/tmux/tmux) | Terminal multiplexer |
+| [ufw](https://launchpad.net/ufw) | An uncomplicated firewall |
 | [yazi](https://github.com/sxyazi/yazi) | Fast CLI file manager packed with features |
 
 ### GUI
@@ -57,15 +61,16 @@ Hyprland starter kit
 | Package | Description |
 | - | - |
 | [awww](https://codeberg.org/LGFae/awww) | Wallpaper tool with animations |
-| [commit-mono-nerd](https://github.com/ryanoasis/nerd-fonts) | .otf nerd font that also supports bold, italic, and bold italic |
-| [trivalent](https://github.com/secureblue/Trivalent) | Backup browser |
 | [dunst](https://github.com/dunst-project/dunst) | Lightweight and customizable notification daemon |
 | [focal](https://github.com/iynaix/focal) | Slick screenshot/screen recording tool |
+| [foot](https://codeberg.org/dnkl/foot) | A fast, lightweight and minimalistic Wayland terminal emulator |
 | [hyprland](https://hyprland.org/) | Fast and great looking window manager/compositor |
-| [kitty](https://sw.kovidgoyal.net/kitty/) | Fast, feature-rich, GPU based terminal emulator |
 | [librewolf](https://librewolf.net/) | Main browser |
 | [noto-fonts](https://en.wikipedia.org/wiki/Noto_fonts) | Full coverage unicode fonts |
+| [otf-commit-mono-nerd](https://github.com/ryanoasis/nerd-fonts) | .otf nerd font that also supports bold, italic, and bold italic |
+| [otf-font-awesome](https://fontawesome.com) | A popular icon font |
 | [python-pywalfox](https://github.com/frewacom/pywalfox) | Themes firefox with pywal colors |
+| [trivalent](https://github.com/secureblue/Trivalent) | Backup browser |
 | [wallust](https://codeberg.org/explosion-mental/wallust) | Set whole system color scheme from wallpaper colors |
 | [waybar](https://github.com/Alexays/Waybar) | Highly customizable bar for wayland |
 | [wofi](https://github.com/SimplyCEO/wofi) | Fast launcher/menu program for wayland |
@@ -82,10 +87,10 @@ This section is more personal.
 | [element-desktop-nightly-bin](https://github.com/element-hq/element-web) | Matrix client |
 | [gimp](https://www.gimp.org/) | Image editor |
 | [inkscape](https://www.inkscape.org/) | Vector graphics editor |
-| [spotify-launcher](https://github.com/kpcyrd/spotify-launcher) | Handles Spotify |
 | [telegram-desktop](https://telegram.org/) | Telegram messenger |
 | [thunderbird](https://www.thunderbird.net) | Email client |
 | [walogram-git](https://codeberg.org/thirtysix/walogram) | Generate telegram-desktop theme |
+| [yt-dlp](https://github.com/yt-dlp/yt-dlp) | A useful tool that does useful tool things |
 
 ## Install
 
