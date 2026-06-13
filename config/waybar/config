@@ -4,7 +4,7 @@
     "reload_style_on_change": true,
     // modules layout
     "modules-left": [
-        "hyprland/workspaces"
+        "ext/workspaces"
     ],
     "modules-center": [
         "hyprland/window"
@@ -19,6 +19,9 @@
         "clock"
     ],
     // modules config
+    "ext/workspaces": {
+        "on-click": "activate"
+    },
     "hyprland/window": {
         "separate-outputs": true,
         "icon": true,
