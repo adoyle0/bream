@@ -222,6 +222,7 @@ install_gui() {
         foot-terminfo \
         hyprland \
         hyprpolkitagent \
+        hyprsunset \
         libappindicator \
         pipewire \
         uwsm \
@@ -233,6 +234,8 @@ install_gui() {
         xdg-desktop-portal-gtk \
         xdg-desktop-portal-hyprland \
         &&
+
+    systemctl --user enable --now hyprsunset
 
     mkdir -P "$HOME"/Pictures/Screenshots
 
