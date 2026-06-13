@@ -220,22 +220,43 @@ install_gui() {
         focal-hyprland-git \
         foot \
         foot-terminfo \
+        hypridle \
         hyprland \
+        hyprlauncher \
+        hyprlock \
         hyprpolkitagent \
         hyprsunset \
         libappindicator \
-        pipewire \
+        libnotify \
+        qt5-wayland \
+        qt6-wayland \
         uwsm \
         waybar \
-        wireplumber \
         wl-clip-persist \
-        wofi \
         xdg-desktop-portal \
         xdg-desktop-portal-gtk \
         xdg-desktop-portal-hyprland \
         &&
 
+    systemctl --user enable --now hypridle
+    systemctl --user enable --now hyprpolkitagent
     systemctl --user enable --now hyprsunset
+
+    yes | paru -S --needed --noconfirm --pgpfetch \
+        hyprpwcenter \
+        pipewire \
+        pipewire-alsa \
+        pipewire-audio \
+        pipewire-jack \
+        pipewire-libcamera \
+        pipewire-pulse \
+        pipewire-v4l2 \
+        wireplumber \
+        &&
+
+    systemctl --user enable --now pipewire
+    systemctl --user enable --now pipewire-pulse
+    systemctl --user enable --now wireplumber
 
     mkdir -P "$HOME"/Pictures/Screenshots
 
@@ -393,6 +414,11 @@ setup() {
     fi &&
 
     install_shell &&
+
+    # Add user to groups
+    sudo usermod -aG \
+        adm,ftp,games,http,log,rfkill,sys,systemd-journal,uucp,wheel,audio,disk,floppy,input,kvm,optical,scanner,storage,video \
+        "$USER"
 
     # this should be last
     cleanup || return 1

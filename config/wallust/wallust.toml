@@ -46,7 +46,8 @@ colors = { src = "colors", dst = "~/.cache/wal/colors" }
 css = { src = "colors.css", dst = "~/.cache/wal/colors.css" }
 dunst = { src = "dunstrc", dst = "~/.config/dunst/dunstrc" }
 foot = { src = "colors-foot.ini", dst = "~/.cache/wal/colors-foot.ini" }
-hyprland = { src = "colors-hyprland.lua", dst = "~/.cache/wal/colors-hyprland.lua" }
+hyprland = { src = "colors-hyprland.conf", dst = "~/.cache/wal/colors-hyprland.conf" }
+hyprland_lua = { src = "colors-hyprland.lua", dst = "~/.cache/wal/colors-hyprland.lua" }
 json = { src = "colors.json", dst = "~/.cache/wal/colors.json" }
 kitty = { src = "colors-kitty.conf", dst = "~/.cache/wal/colors-kitty.conf" }
 sh = { src = "colors.sh", dst = "~/.cache/wal/colors.sh" }

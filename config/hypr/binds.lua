@@ -8,7 +8,7 @@ local game = 'steam'
 local game2 = 'lutris'
 local image_editor = 'gimp'
 local image_editor2 = 'inkscape'
-local menu = 'wofi --show drun'
+local menu = 'hyprlauncher'
 local music = 'spotify-launcher'
 local music2 = 'lmms'
 local terminal = 'foot'
@@ -24,6 +24,7 @@ hl.bind(Mod .. ' + Backspace', hl.dsp.exec_cmd 'hyprctl reload')
 hl.bind(Mod .. ' + F', hl.dsp.window.fullscreen { action = 'toggle' })
 hl.bind(Mod .. ' + P', hl.dsp.window.pin())
 hl.bind(Mod .. ' + Q', hl.dsp.window.close())
+hl.bind(Mod .. ' + Escape', hl.dsp.exec_cmd 'uwsm app hyprlock')
 
 hl.bind(Mod .. ' + SHIFT + E', hl.dsp.exec_cmd 'uwsm stop') -- Exit hyprland
 hl.bind(Mod .. ' + SHIFT + F', hl.dsp.window.float())
