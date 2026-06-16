@@ -4,10 +4,12 @@ dofile(os.getenv 'HOME' .. '/.cache/wal/colors-hyprland.lua')
 require 'animations'
 require 'binds'
 require 'input'
-require 'monitors'
 require 'rules'
 require 'zoom'
 
+-- Monitors
+-- TODO: Make this requirement optional
+require 'monitors'
 hl.monitor {
   output = '',
   mode = 'preferred',
