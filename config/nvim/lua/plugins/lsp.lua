@@ -118,9 +118,6 @@ return {
     })
 
     local ensure_installed = {
-      'bashls',
-      'beautysh',
-      'cssls',
       'docker_compose_language_service',
       'dockerls',
       'eslint_d',
@@ -128,15 +125,11 @@ return {
       'htmlbeautifier',
       'jsonls',
       'markdownlint',
-      'mdformat',
       'pbls',
-      'prettier',
-      'prettierd',
       'pyright',
       'rustywind',
       'shellharden',
       'stylua',
-      'tailwindcss',
       'taplo',
       'ts_ls',
       'yamlfix',
@@ -150,6 +143,7 @@ return {
     ---@type table<string, vim.lsp.Config>
     local servers = {
       bashls = {},
+      beautysh = {},
       black = {},
       clangd = {},
       cssls = {},
@@ -161,7 +155,9 @@ return {
       jsonls = {},
       luacheck = {},
       markdownlint = {},
+      mdformat = {},
       pbls = {},
+      prettier = {},
       pyright = {},
       shellcheck = {},
       stylua = {},
