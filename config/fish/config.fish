@@ -44,6 +44,9 @@ abbr vi nvim
 abbr vim nvim
 abbr vimdiff "nvim -d"
 
+# Swap cat with bat -p
+abbr cat bat -p
+
 # Unsorted
 abbr ka killall
 abbr mkd "mkdir -pv"
