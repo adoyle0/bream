@@ -96,7 +96,6 @@ install_base() {
 
     paru -S --needed --noconfirm --pgpfetch \
         cargo-generate \
-        cargo-leptos \
         cargo-tauri \
         clang \
         git \
@@ -104,8 +103,10 @@ install_base() {
         mold \
         tailwindcss-bin \
         trunk \
-        wasm-bindgen \
         &&
+
+    # TODO: cargo-leptos isn't on alarm
+    # TODO: wasm-bindgen isn't on alarm
 
     # Neovim and deps
     paru -S --needed --noconfirm --pgpfetch \
@@ -120,11 +121,11 @@ install_base() {
         python-isort \
         ripgrep \
         rubygems \
-        shellcheck \
         tree-sitter-cli \
         tree-sitter-grammars \
         &&
 
+    # TODO: shellcheck isn't on alarm
 
     cargo install leptosfmt &&
 
