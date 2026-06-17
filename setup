@@ -57,6 +57,7 @@ install_base() {
         btop \
         coreutils \
         earlyoom \
+        foot-terminfo \
         gnome-keyring \
         libsecret \
         man-db \
