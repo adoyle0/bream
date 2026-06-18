@@ -111,6 +111,7 @@ install_base() {
     paru -S --needed --noconfirm --pgpfetch \
         bash-language-server \
         beautysh \
+        eslint_d \
         fzf \
         go \
         gopls \
@@ -118,20 +119,29 @@ install_base() {
         luarocks \
         neovim \
         nodejs \
+        markdownlint-cli \
         mdformat \
         mdformat-tables \
         prettier \
+        pyright \
         python-black \
         python-isort \
         ripgrep \
         rubygems \
+        shellcheck \
+        shellharden \
+        stylua \
         tailwindcss-language-server \
+        taplo-cli \
         tree-sitter-cli \
         tree-sitter-grammars \
+        typescript-language-server \
         vscode-css-languageserver \
+        vscode-html-languageserver \
+        vscode-json-languageserver \
+        yaml-language-server \
+        zls \
         &&
-
-    # TODO: shellcheck isn't on alarm
 
     # Yazi and deps
     paru -S --needed --noconfirm --pgpfetch \

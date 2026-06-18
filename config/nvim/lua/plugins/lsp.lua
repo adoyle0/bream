@@ -117,26 +117,6 @@ return {
       end,
     })
 
-    local ensure_installed = {
-      'docker_compose_language_service',
-      'dockerls',
-      'eslint_d',
-      'html',
-      'htmlbeautifier',
-      'jsonls',
-      'markdownlint',
-      'pbls',
-      'pyright',
-      'rustywind',
-      'shellharden',
-      'stylua',
-      'taplo',
-      'ts_ls',
-      'yamlfix',
-      'yamlls',
-      'zls',
-    }
-
     -- Enable the following language servers
     --  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
     --  See `:help lsp-config` for information about keys and how to configure
@@ -147,8 +127,6 @@ return {
       black = {},
       clangd = {},
       cssls = {},
-      docker_compose_language_service = {},
-      dockerls = {},
       gopls = {},
       html = {},
       isort = {},
@@ -156,7 +134,6 @@ return {
       luacheck = {},
       markdownlint = {},
       mdformat = {},
-      pbls = {},
       prettier = {},
       pyright = {},
       shellcheck = {},
