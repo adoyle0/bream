@@ -98,6 +98,7 @@ install_base() {
     paru -S --needed --noconfirm --pgpfetch \
         cargo-generate \
         cargo-tauri \
+        cargo-watch \
         clang \
         git \
         kondo \
@@ -127,10 +128,10 @@ install_base() {
         python-isort \
         ripgrep \
         rubygems \
-        tailwind-css-language-server \
+        tailwindcss-language-server \
         tree-sitter-cli \
         tree-sitter-grammars \
-        vscode-css-language-server \
+        vscode-css-languageserver \
         &&
 
     # TODO: shellcheck isn't on alarm
