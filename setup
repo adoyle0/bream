@@ -86,7 +86,8 @@ install_base() {
         &&
 
     # Base dev
-    yes | paru -S --needed --noconfirm --pgpfetch \
+    paru -Runs rust cargo-binstall --noconfirm
+    paru -S --needed --noconfirm --pgpfetch \
         rustup \
         &&
 
@@ -96,19 +97,15 @@ install_base() {
     rustup target add wasm32-unknown-unknown &&
 
     paru -S --needed --noconfirm --pgpfetch \
+        cargo-binstall \
         cargo-generate \
-        cargo-tauri \
         cargo-watch \
         clang \
         git \
         kondo \
         mold \
         tailwindcss-bin \
-        trunk \
         &&
-
-    # TODO: cargo-leptos isn't on alarm
-    # TODO: wasm-bindgen isn't on alarm
 
     # Neovim and deps
     paru -S --needed --noconfirm --pgpfetch \
@@ -135,8 +132,6 @@ install_base() {
         &&
 
     # TODO: shellcheck isn't on alarm
-
-    cargo install leptosfmt &&
 
     # Yazi and deps
     paru -S --needed --noconfirm --pgpfetch \
