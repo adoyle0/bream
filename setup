@@ -55,29 +55,23 @@ install_base() {
         archlinux-contrib \
         bat \
         btop \
-        coreutils \
         earlyoom \
         foot-terminfo \
         gnome-keyring \
-        libsecret \
         man-db \
         man-pages \
         mosh \
         pacman-contrib \
         rsync \
         sl \
-        tar \
         tmux \
         tree \
-        ufw \
         unrar \
         unzip \
         wget \
         &&
 
     sudo systemctl enable --now earlyoom &&
-    sudo ufw allow ssh &&
-    sudo systemctl enable --now ufw &&
 
     # Fish and deps
     paru -S --needed --noconfirm --pgpfetch \
@@ -85,8 +79,8 @@ install_base() {
         pkgfile \
         &&
 
-    # Base dev
-    paru -Runs rust cargo-binstall --noconfirm
+    # Dev stuff
+    paru -Runs rust --noconfirm
     paru -S --needed --noconfirm --pgpfetch \
         rustup \
         &&
@@ -97,8 +91,8 @@ install_base() {
     rustup target add wasm32-unknown-unknown &&
 
     paru -S --needed --noconfirm --pgpfetch \
-        cargo-binstall \
         cargo-generate \
+        cargo-leptos \
         cargo-watch \
         clang \
         git \
@@ -208,14 +202,10 @@ init_wal() {
 
 install_gui() {
 
+    # acpi \ needed?
     paru -S --needed --noconfirm --pgpfetch \
-        acpi \
-        bluez \
         gnome-themes-extra \
         librewolf-bin \
-        noto-fonts \
-        noto-fonts-cjk \
-        noto-fonts-emoji \
         noto-fonts-extra \
         otf-commit-mono-nerd \
         otf-font-awesome \
@@ -256,22 +246,6 @@ install_gui() {
     systemctl --user enable --now hypridle
     systemctl --user enable --now hyprpolkitagent
     systemctl --user enable --now hyprsunset
-
-    yes | paru -S --needed --noconfirm --pgpfetch \
-        hyprpwcenter \
-        pipewire \
-        pipewire-alsa \
-        pipewire-audio \
-        pipewire-jack \
-        pipewire-libcamera \
-        pipewire-pulse \
-        pipewire-v4l2 \
-        wireplumber \
-        &&
-
-    systemctl --user enable --now pipewire
-    systemctl --user enable --now pipewire-pulse
-    systemctl --user enable --now wireplumber
 
     mkdir -P "$HOME"/Pictures/Screenshots
 
