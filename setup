@@ -363,7 +363,7 @@ prepare() {
     ensure_paru &&
 
     # Rank mirrors for SPEED
-    paru -S --needed --noconfirm --pgpfetch rate-mirrors-bin &&
+    paru -S --needed --noconfirm --pgpfetch rate-mirrors &&
     if [ ! "$local_repo" ]; then
         "$HOME"/.local/bin/bream mirrors
     fi || return 1
