@@ -235,6 +235,7 @@ install_gui() {
         libnotify \
         qt5-wayland \
         qt6-wayland \
+        swayimg \
         uwsm \
         waybar \
         wl-clip-persist \
