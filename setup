@@ -233,6 +233,7 @@ install_gui() {
         hyprsunset \
         libappindicator \
         libnotify \
+        mpv \
         qt5-wayland \
         qt6-wayland \
         swayimg \
