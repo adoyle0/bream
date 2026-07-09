@@ -65,6 +65,7 @@ Hyprland starter kit
 | [focal](https://github.com/iynaix/focal)                        | Slick screenshot/screen recording tool                          |
 | [foot](https://codeberg.org/dnkl/foot)                          | A fast, lightweight and minimalistic Wayland terminal emulator  |
 | [hyprland](https://hyprland.org/)                               | Fast and great looking window manager/compositor                |
+| [hyprpwcenter](https://github.com/hyprwm/hyprpwcenter)          | A GUI Pipewire control center                                   |
 | [librewolf](https://librewolf.net/)                             | Main browser                                                    |
 | [otf-commit-mono-nerd](https://github.com/ryanoasis/nerd-fonts) | .otf nerd font that also supports bold, italic, and bold italic |
 | [otf-font-awesome](https://fontawesome.com)                     | A popular icon font                                             |

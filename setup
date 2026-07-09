@@ -230,6 +230,7 @@ install_gui() {
         hyprlauncher \
         hyprlock \
         hyprpolkitagent \
+        hyprpwcenter \
         hyprsunset \
         libappindicator \
         libnotify \
