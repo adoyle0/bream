@@ -123,19 +123,22 @@ return {
     ---@type table<string, vim.lsp.Config>
     local servers = {
       bashls = {},
+      beautysh = {},
+      black = {},
       clangd = {},
       cssls = {},
-      docker_compose_language_service = {},
-      dockerls = {},
       gopls = {},
       html = {},
+      isort = {},
       jsonls = {},
+      luacheck = {},
       markdownlint = {},
-      mutt_ls = {},
-      pbls = {},
+      mdformat = {},
+      prettier = {},
       pyright = {},
-      tailwindcss = {},
+      shellcheck = {},
       stylua = {},
+      tailwindcss = {},
       ts_ls = {},
       yamlls = {},
       zls = {},
@@ -171,33 +174,6 @@ return {
         },
       },
     }
-
-    -- Ensure the servers and tools above are installed
-    --
-    -- To check the current status of installed tools and/or manually install
-    -- other tools, you can run
-    --    :Mason
-    --
-    -- You can press `g?` for help in this menu.
-    local ensure_installed = vim.tbl_keys(servers or {})
-    vim.list_extend(ensure_installed, {
-      'beautysh',
-      'black',
-      'eslint_d',
-      'htmlbeautifier',
-      'isort',
-      'luacheck',
-      'mdformat',
-      -- 'nginx-language-server', broken: https://github.com/pappasam/nginx-language-server/issues/24
-      'pbls',
-      'prettier',
-      'prettierd',
-      'rustywind',
-      'shellcheck',
-      'shellharden',
-      'taplo',
-      'yamlfix',
-    })
 
     require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

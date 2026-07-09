@@ -1,38 +1,39 @@
 {
     // basics
-
     "spacing": 4,
     "reload_style_on_change": true,
-
-
     // modules layout
-
-    "modules-left": ["hyprland/workspaces"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["custom/focal", "pulseaudio", "cpu", "memory", "battery", "tray", "clock"],
-
-
+    "modules-left": [
+        "ext/workspaces"
+    ],
+    "modules-center": [
+        "hyprland/window"
+    ],
+    "modules-right": [
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "battery",
+        "network",
+        "tray",
+        "clock"
+    ],
     // modules config
-
+    "ext/workspaces": {
+        "on-click": "activate"
+    },
     "hyprland/window": {
         "separate-outputs": true,
         "icon": true,
+        "icon-size": 16
     },
     "custom/focal": {
-      "exec": "focal-waybar --recording 'REC'",
-      "format": "{}",
-      // interval to poll for updated recording status
-      "interval": 1,
-      "on-click": "focal video --stop",
+        "exec": "uwsm app -- focal-waybar --recording 'REC'",
+        "format": "{}",
+        // interval to poll for updated recording status
+        "interval": 1,
+        "on-click": "uwsm app -- focal video --stop"
     },
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-            }
-        },
-
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
         "format": "{volume}% {icon} {format_source}",
@@ -48,34 +49,33 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": ["", "", ""]
-            },
-        "on-click": "pavucontrol"
+            "default": [
+                "",
+                "",
+                ""
+            ]
         },
-
+        "on-click": "uwsm app -- hyprpwcenter"
+    },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
         "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-ethernet": "{ifname} ",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
-        },
-
+        "format-alt": "{ifname}: {ipaddr}"
+    },
     "cpu": {
         "format": " {usage}%",
         "tooltip": false
-        },
-
+    },
     "memory": {
         "format": " {}%"
-        },
-
+    },
     "tray": {
         // "icon-size": 21,
         "spacing": 10
-        },
-
+    },
     "battery": {
         "states": {
             // "good": 95,
@@ -88,12 +88,17 @@
         "format-alt": "{icon} {time}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
-        },
-
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            ""
+        ]
+    },
     "clock": {
         "format": "{:%I:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%Y-%m-%d}"
-        },
+    }
 }

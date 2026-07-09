@@ -16,7 +16,7 @@ EOF
 # `setup files` - skips setup and just copies files from working dir
 # `setup -b [branch]` - download and install a certain branch
 
-bin_dir=/usr/bin
+bin_dir="$HOME"/.local/bin
 config_dir="$HOME"/.config
 cache_dir="$HOME"/.cache/bream
 git_url=https://git.doordesk.net/adam/bream.git
@@ -47,34 +47,31 @@ ensure_paru() {
     return 0
 }
 
-install_base_arch() {
+install_base() {
     echo "Installing base..."
 
+    # Base
     paru -S --needed --noconfirm --pgpfetch \
         archlinux-contrib \
         bat \
         btop \
-        byobu \
-        cargo-binstall \
-        clang \
-        coreutils \
+        earlyoom \
+        foot-terminfo \
         gnome-keyring \
-        kondo \
-        kitty-terminfo \
-        libsecret \
         man-db \
         man-pages \
         mosh \
         pacman-contrib \
         rsync \
         sl \
-        tar \
+        tmux \
         tree \
         unrar \
         unzip \
-        wild \
         wget \
         &&
+
+    sudo systemctl enable --now earlyoom &&
 
     # Fish and deps
     paru -S --needed --noconfirm --pgpfetch \
@@ -82,17 +79,62 @@ install_base_arch() {
         pkgfile \
         &&
 
+    # Dev stuff
+    paru -Runs rust --noconfirm
+    paru -S --needed --noconfirm --pgpfetch \
+        rustup \
+        &&
+
+    rustup default stable &&
+    rustup component add rust-analyzer &&
+    rustup toolchain install nightly &&
+    rustup target add wasm32-unknown-unknown &&
+
+    paru -S --needed --noconfirm --pgpfetch \
+        cargo-generate \
+        cargo-leptos \
+        cargo-watch \
+        clang \
+        git \
+        kondo \
+        mold \
+        tailwindcss-bin \
+        &&
+
     # Neovim and deps
     paru -S --needed --noconfirm --pgpfetch \
+        bash-language-server \
+        beautysh \
+        eslint_d \
         fzf \
         go \
+        gopls \
+        luacheck \
         luarocks \
         neovim \
-        npm \
+        nodejs \
+        markdownlint-cli \
+        mdformat \
+        mdformat-tables \
+        prettier \
+        pyright \
+        python-black \
+        python-isort \
         ripgrep \
         rubygems \
+        shellcheck \
+        shellharden \
+        stylua \
+        tailwindcss-language-server \
+        taplo-cli \
         tree-sitter-cli \
         tree-sitter-grammars \
+        typescript-language-server \
+        vscode-css-languageserver \
+        vscode-html-languageserver \
+        vscode-json-languageserver \
+        yaml-language-server \
+        zls \
         &&
 
     # Yazi and deps
@@ -110,19 +152,19 @@ install_base_arch() {
         zoxide \
         &&
 
-    cargo binstall --no-confirm leptosfmt || return 1
-
     return 0
 }
 
 init_browser() {
-    echo "Setting default browser..."
+    if ! [ "$(xdg-settings get default-web-browser)" = "librewolf.desktop" ]; then
+        echo "Setting default browser..."
 
-    # Unset BROWSER because xdg gets pissy if it doesn't feel like it's the authority
-    unset BROWSER &&
-    xdg-settings set default-web-browser librewolf.desktop &&
-    # Set it anyway
-    export BROWSER=librewolf || return 1
+        # Unset BROWSER because xdg gets pissy if it doesn't feel like it's the authority
+        unset BROWSER &&
+        xdg-settings set default-web-browser librewolf.desktop &&
+        # Set it anyway
+        export BROWSER=librewolf || return 1
+    fi
 
     return 0
 }
@@ -150,24 +192,23 @@ init_wallpaper() {
 
 init_wal() {
     if ! [ -d "$HOME"/.cache/wal ]; then
-        bream setbg
+        "$HOME"/.local/bin/bream setbg
     else
-        bream setbg -r
+        "$HOME"/.local/bin/bream setbg -r
     fi || return 1
 
     return 0
 }
 
-install_gui_arch() {
+install_gui() {
+
+    # acpi \ needed?
     paru -S --needed --noconfirm --pgpfetch \
-        acpi \
-        bluez \
         gnome-themes-extra \
         librewolf-bin \
-        noto-fonts \
-        noto-fonts-cjk \
-        noto-fonts-emoji \
+        noto-fonts-extra \
         otf-commit-mono-nerd \
+        otf-font-awesome \
         playerctl \
         python-pywalfox-librewolf \
         trivalent-bin \
@@ -178,26 +219,37 @@ install_gui_arch() {
 
     # Hyprland setup
     paru -S --needed --noconfirm --pgpfetch \
+        awww \
         cliphist \
         dunst \
         focal-hyprland-git \
+        foot \
+        foot-terminfo \
+        hypridle \
         hyprland \
+        hyprlauncher \
+        hyprlock \
         hyprpolkitagent \
-        kitty \
-        kitty-shell-integration \
-        pipewire \
+        hyprsunset \
+        libappindicator \
+        libnotify \
+        mpv \
         qt5-wayland \
         qt6-wayland \
-        awww \
+        swayimg \
         uwsm \
-        wl-clip-persist \
         waybar \
-        wireplumber \
-        wofi \
+        wl-clip-persist \
         xdg-desktop-portal \
         xdg-desktop-portal-gtk \
         xdg-desktop-portal-hyprland \
         &&
+
+    systemctl --user enable --now hypridle
+    systemctl --user enable --now hyprpolkitagent
+    systemctl --user enable --now hyprsunset
+
+    mkdir -P "$HOME"/Pictures/Screenshots
 
     # Set dark theme
     # Unset and then reset to ensure it sticks in case dconf doesn't exist
@@ -206,31 +258,27 @@ install_gui_arch() {
     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita' &&
     gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-dark' &&
 
-    # Enable this as a service to keep it out of the config
-    systemctl --user enable --now hyprpolkitagent.service \
-        || return 1
-
     return 0
 }
 
-install_extras_arch() {
+install_extras() {
     paru -S --needed --noconfirm --pgpfetch \
         discord_arch_electron \
         element-desktop-nightly-bin \
         gimp \
         inkscape \
-        spotify-launcher \
         telegram-desktop \
         thunderbird \
         walogram-git \
+        yt-dlp \
         &&
 
     return 0
 }
 
 install_shell() {
-    if ! [ "$SHELL" = "/bin/fish" ]; then
-        sudo chsh -s /bin/fish "$USER" &&
+    if ! [ "$SHELL" = "/usr/bin/fish" ]; then
+        sudo chsh -s /usr/bin/fish "$USER" &&
         echo "Reboot for changes to take effect"
     fi
 
@@ -255,7 +303,7 @@ install_bin() {
     [ ! -d "$bin_dir" ] && { mkdir -p "$bin_dir" || return 1; }
 
     cd "$cache_dir" &&
-    sudo cp -r --update=all bin/* "$bin_dir" || return 1
+    cp -r --update=all bin/* "$bin_dir" || return 1
 
     return 0
 }
@@ -279,18 +327,24 @@ install_home() {
 }
 
 cleanup() {
-    rm -rf "$cache_dir"
+    [ -d "$cache_dir" ] && { rm -rf "$cache_dir" && return 0; } || return 0
+}
+
+install_etc() {
+    yes | sudo cp -r etc/* /etc/ || return 1
+
+    # Disable core dumps
+    sudo sysctl -p /etc/sysctl.d/50-coredump.conf
+    sudo systemctl daemon-reload
+
+    return 0
 }
 
 prepare() {
-    # Enable pacman colors
-    sudo sed '/Color/s/^#//' -i /etc/pacman.conf &&
-
     # Enable multi-threading for xz
     export XZ_DEFAULTS="-T 0" &&
 
-    # grab wild here (wild requires clang) for linking any rust builds during the rest of the install
-    sudo pacman -S --needed --noconfirm git base-devel clang wild &&
+    sudo pacman -S --needed --noconfirm git base-devel clang mold &&
 
     # Make sure .cache exists
     if ! [ -d "$HOME"/.cache ]; then
@@ -304,50 +358,61 @@ prepare() {
         git clone --branch "$git_branch" "$git_url" "$cache_dir"
     fi &&
 
+    install_etc &&
     install_bin &&
     install_home &&
     install_config &&
     ensure_paru &&
 
     # Rank mirrors for SPEED
-    paru -S --needed --noconfirm --pgpfetch rate-mirrors-bin &&
+    paru -S --needed --noconfirm --pgpfetch rate-mirrors &&
     if [ ! "$local_repo" ]; then
-        bream mirrors
+        "$HOME"/.local/bin/bream mirrors
     fi || return 1
 
     return 0
 }
-
-setup_arch() {
+setup() {
+    cleanup &&
     prepare &&
 
+    # Make sure .cache exists
+    if ! [ -d "$HOME"/.cache ]; then
+        mkdir "$HOME"/.cache
+    fi &&
+
+    # Sync files
+    if [ "$local_repo" ]; then
+        cp -r . "$cache_dir"
+    else
+        git clone --branch "$git_branch" "$git_url" "$cache_dir"
+    fi &&
+
     if [ "$1" -ge 1 ]; then
-        install_base_arch || return 1
+        install_base || return 1
     fi &&
 
     if [ "$1" -ge 2 ]; then
-        install_gui_arch &&
+        install_gui || return 1
         init_browser &&
         init_pywalfox &&
         init_wallpaper &&
         init_wal || return 1
-
     fi &&
 
     if [ "$1" -ge 3 ]; then
-        install_extras_arch || return 1
+        install_extras || return 1
     fi &&
 
     install_shell &&
 
+    # Add user to groups
+    sudo usermod -aG \
+        adm,ftp,games,http,log,rfkill,sys,systemd-journal,uucp,wheel,audio,disk,floppy,input,kvm,optical,scanner,storage,video \
+        "$USER"
+
     # this should be last
     cleanup || return 1
-
-    return 0
-}
-
-draw_header() {
-    clear && echo "$HEADER" || return 1
 
     return 0
 }
@@ -376,6 +441,12 @@ get_user_input() {
     return 0
 }
 
+draw_header() {
+    clear && echo "$HEADER" || return 1
+
+    return 0
+}
+
 main() {
     user_input=$(get_user_input)
 
@@ -388,11 +459,11 @@ main() {
     case "$os_name" in
         *Arch*)
             printf "Setup for %s\n\n" "$os_name"
-            setup_arch "$user_input" || return 1
+            setup "$user_input" || return 1
             ;;
         *Manjaro*)
             printf "Setup for %s\n\n" "$os_name"
-            setup_arch "$user_input" || return 1
+            setup "$user_input" || return 1
             ;;
         *)
             printf "%s is not supported at this time\n" "$os_name"
@@ -408,9 +479,12 @@ draw_header
 # Just copy files and exit
 if [ "$1" = files ]; then
     echo "Copying files..."
+    [ ! -d "$cache_dir" ] && { mkdir -p "$cache_dir" || return 1; }
+
     cp -r . "$cache_dir" &&
 
-    if install_home &&
+    if install_etc &&
+    install_home &&
     install_config &&
     install_bin &&
     cleanup; then

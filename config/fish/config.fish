@@ -44,8 +44,10 @@ abbr vi nvim
 abbr vim nvim
 abbr vimdiff "nvim -d"
 
+# Swap cat with bat -p
+abbr cat bat -p
+
 # Unsorted
-abbr bb byobu
 abbr ka killall
 abbr mkd "mkdir -pv"
 abbr t "tree -L"
@@ -72,24 +74,14 @@ if status is-login
         "
     end
 
-    # Add cargo bin to path
-    fish_add_path ~/.cargo/bin/
-
-    # Use vi bindings
-    fish_vi_key_bindings
-
     # Disable default greeting message
     set -U fish_greeting
 
-    # Android stuff for taury
-    set -gx ANDROID_HOME $HOME/Android/Sdk
-    set -gx NDK_HOME $ANDROID_HOME/ndk/(ls -1 $ANDROID_HOME/ndk)
-
-    # Default programs
+    # Set defaults browser
     set -gx BROWSER librewolf
     set -gx EDITOR nvim
     set -gx PAGER "bat -p"
-    set -gx TERMINAL alacritty
+    set -gx TERMINAL foot
     set -gx VISUAL nvim
 
     # Make fzf easier on the eyes
@@ -99,9 +91,13 @@ if status is-login
     set -gx XZ_DEFAULTS "-T 0"
 
     # Start hyprland at login
-    if test -e /usr/bin/hyprland
-        if test -z "$DISPLAY" -a "$XDG_VTNR" = 1
-            exec uwsm start hyprland.desktop
-        end
+    if test -z $DISPLAY; and test (tty) = /dev/tty1
+        exec uwsm start hyprland.desktop
     end
 end
+# PREPEND local bin dirs to path to allow separate user and system toolchains
+fish_add_path -gmpP ~/.cargo/bin/
+fish_add_path -gmpP ~/.local/bin/
+
+# Use vi bindings
+fish_vi_key_bindings
