@@ -94,6 +94,9 @@ This section is more personal.
 
 ## Install
 
+The minimal base to install bream on is the archinstall minimal preset. You should select all the
+fonts and set up your own audio, bluetooth, etc.
+
 > [!NOTE]
 > To update an existing installation run `bream update`.
 
@@ -112,7 +115,16 @@ This section is more personal.
 
 ## Post Install
 
+Use <kbd>Super</kbd> + <kbd>F1</kbd> or <kbd>Super</kbd> + <kbd>?</kbd> to view all keybinds.
+
+## Theming
+
 Some manual setup is required for theming if you want eye candy.
+
+### Wallpaper
+
+If you install bream in a CLI environment, the wallpaper may not be set. If you just see a
+blank background then either press <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> or run `bream setbg` manually.
 
 ### Pywalfox
 
