@@ -297,6 +297,9 @@ install_config() {
         cp -r --update=all "$file" "$oldfile" || break
     done || return 1
 
+    monitors=.config/hypr/monitors.lua
+    [ ! -f "$HOME/$monitors" ] && { echo "-- Put your custom monitors configuration here" > "$HOME/$monitors" && echo "-- This file is system-specific and won't be overwritten by future updates" >> "$HOME/$monitors" || return 1; }
+
     return 0
 }
 

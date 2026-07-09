@@ -38,7 +38,19 @@ wipe_old_files() {
         "$HOME"/.config/gtk-2.0 \
         "$HOME"/.config/gtk-3.0 \
         "$HOME"/.config/gtk-4.0 \
-        "$HOME"/.config/hypr \
+        "$HOME"/.config/hypr/hyprland.conf \
+        "$HOME"/.config/hypr/keybinds.conf \
+        "$HOME"/.config/hypr/animations.lua \
+        "$HOME"/.config/hypr/binds.lua \
+        "$HOME"/.config/hypr/hypridle.conf \
+        "$HOME"/.config/hypr/hyprland.lua \
+        "$HOME"/.config/hypr/hyprlauncher.conf \
+        "$HOME"/.config/hypr/hyprlock.conf \
+        "$HOME"/.config/hypr/hyprsunset.conf \
+        "$HOME"/.config/hypr/hyprtoolkit.conf \
+        "$HOME"/.config/hypr/input.lua \
+        "$HOME"/.config/hypr/rules.lua \
+        "$HOME"/.config/hypr/zoom.lua \
         "$HOME"/.config/kitty \
         "$HOME"/.config/mango \
         "$HOME"/.config/nnn \
