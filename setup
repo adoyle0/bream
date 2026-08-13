@@ -265,7 +265,7 @@ install_gui() {
 install_extras() {
     paru -S --needed --noconfirm --pgpfetch \
         discord_arch_electron \
-        element-desktop-nightly-bin \
+        element-desktop \
         gimp \
         inkscape \
         telegram-desktop \

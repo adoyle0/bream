@@ -16,7 +16,7 @@ local virtual_machine = 'virt-manager'
 
 -- Chat clients
 local discord = 'discord'
-local matrix = 'element-desktop-nightly'
+local matrix = 'element-desktop'
 local telegram = 'Telegram'
 
 -- Global

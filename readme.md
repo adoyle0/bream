@@ -81,16 +81,16 @@ Hyprland starter kit
 Eye candy, stuff that won't install on ARM devices.
 This section is more personal.
 
-| Package                                                                  | Description                                |
-| ------------------------------------------------------------------------ | ------------------------------------------ |
-| [discord_arch_electron](https://discord.com/)                            | Discord                                    |
-| [element-desktop-nightly-bin](https://github.com/element-hq/element-web) | Matrix client                              |
-| [gimp](https://www.gimp.org/)                                            | Image editor                               |
-| [inkscape](https://www.inkscape.org/)                                    | Vector graphics editor                     |
-| [telegram-desktop](https://telegram.org/)                                | Telegram messenger                         |
-| [thunderbird](https://www.thunderbird.net)                               | Email client                               |
-| [walogram-git](https://codeberg.org/thirtysix/walogram)                  | Generate telegram-desktop theme            |
-| [yt-dlp](https://github.com/yt-dlp/yt-dlp)                               | A useful tool that does useful tool things |
+| Package                                                      | Description                                |
+| ------------------------------------------------------------ | ------------------------------------------ |
+| [discord_arch_electron](https://discord.com/)                | Discord                                    |
+| [element-desktop](https://github.com/element-hq/element-web) | Matrix client                              |
+| [gimp](https://www.gimp.org/)                                | Image editor                               |
+| [inkscape](https://www.inkscape.org/)                        | Vector graphics editor                     |
+| [telegram-desktop](https://telegram.org/)                    | Telegram messenger                         |
+| [thunderbird](https://www.thunderbird.net)                   | Email client                               |
+| [walogram-git](https://codeberg.org/thirtysix/walogram)      | Generate telegram-desktop theme            |
+| [yt-dlp](https://github.com/yt-dlp/yt-dlp)                   | A useful tool that does useful tool things |
 
 ## Install
 
