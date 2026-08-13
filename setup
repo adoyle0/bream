@@ -205,7 +205,7 @@ install_gui() {
     # acpi \ needed?
     paru -S --needed --noconfirm --pgpfetch \
         gnome-themes-extra \
-        librewolf-bin \
+        librewolf \
         noto-fonts-extra \
         otf-commit-mono-nerd \
         otf-font-awesome \
