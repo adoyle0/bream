@@ -6,6 +6,7 @@ hl.config {
     kb_options = 'caps:escape,altwin:menu_win,altwin:meta_win',
     kb_rules = '',
     kb_variant = '',
+    numlock_by_default = true,
     repeat_delay = 200,
     repeat_rate = 100,
     sensitivity = 0,
