@@ -62,7 +62,7 @@ Hyprland starter kit
 | --------------------------------------------------------------- | --------------------------------------------------------------- |
 | [awww](https://codeberg.org/LGFae/awww)                         | Wallpaper tool with animations                                  |
 | [dunst](https://github.com/dunst-project/dunst)                 | Lightweight and customizable notification daemon                |
-| [focal](https://github.com/iynaix/focal)                        | Slick screenshot/screen recording tool                          |
+| [focal-git](https://github.com/iynaix/focal)                    | Slick screenshot/screen recording tool                          |
 | [foot](https://codeberg.org/dnkl/foot)                          | A fast, lightweight and minimalistic Wayland terminal emulator  |
 | [hyprland](https://hyprland.org/)                               | Fast and great looking window manager/compositor                |
 | [hyprpwcenter](https://github.com/hyprwm/hyprpwcenter)          | A GUI Pipewire control center                                   |
@@ -73,7 +73,6 @@ Hyprland starter kit
 | [trivalent](https://github.com/secureblue/Trivalent)            | Backup browser                                                  |
 | [wallust](https://codeberg.org/explosion-mental/wallust)        | Set whole system color scheme from wallpaper colors             |
 | [waybar](https://github.com/Alexays/Waybar)                     | Highly customizable bar for wayland                             |
-| [wofi](https://github.com/SimplyCEO/wofi)                       | Fast launcher/menu program for wayland                          |
 | [zathura](https://pwmt.org/projects/zathura/)                   | Minimalistic document viewer with keyboard controls             |
 
 ### Bloat

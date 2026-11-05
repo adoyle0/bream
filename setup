@@ -222,7 +222,6 @@ install_gui() {
         awww \
         cliphist \
         dunst \
-        focal-hyprland-git \
         foot \
         foot-terminfo \
         hypridle \
@@ -244,6 +243,12 @@ install_gui() {
         xdg-desktop-portal \
         xdg-desktop-portal-gtk \
         xdg-desktop-portal-hyprland \
+        &&
+
+    # For screenshots
+    paru -S --needed --noconfirm --pgpfetch \
+        focal-git \
+        rofi \
         &&
 
     systemctl --user enable --now hypridle
