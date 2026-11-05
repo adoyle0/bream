@@ -82,7 +82,7 @@ This section is more personal.
 
 | Package                                                      | Description                                |
 | ------------------------------------------------------------ | ------------------------------------------ |
-| [discord_arch_electron](https://discord.com/)                | Discord                                    |
+| [discord](https://discord.com/)                              | Discord                                    |
 | [element-desktop](https://github.com/element-hq/element-web) | Matrix client                              |
 | [gimp](https://www.gimp.org/)                                | Image editor                               |
 | [inkscape](https://www.inkscape.org/)                        | Vector graphics editor                     |
