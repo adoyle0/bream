@@ -37,5 +37,6 @@ hl.window_rule {
   float = true,
   move = 'monitor_w-415 95',
   no_initial_focus = true,
+  pin = true,
   size = { 400, 225 },
 }
