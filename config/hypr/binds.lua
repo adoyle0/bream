@@ -28,7 +28,7 @@ hl.bind(Mod .. ' + Escape', hl.dsp.exec_cmd 'uwsm app hyprlock')
 
 hl.bind(Mod .. ' + SHIFT + E', hl.dsp.exec_cmd 'uwsm stop') -- Exit hyprland
 hl.bind(Mod .. ' + SHIFT + F', hl.dsp.window.float())
-hl.bind(Mod .. ' + SHIFT + P', hl.dsp.exec_cmd 'bream setbg')
+hl.bind(Mod .. ' + SHIFT + P', hl.dsp.exec_cmd '~/.local/bin/bream setbg')
 
 -- Screenshot and screen record
 hl.bind('Print', hl.dsp.exec_cmd 'uwsm app -- focal image --rofi')

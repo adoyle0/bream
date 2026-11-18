@@ -26,16 +26,16 @@ hl.on('hyprland.start', function()
   hl.exec_cmd 'uwsm app -- awww img "$(cat ~./cache/wal/wal)"'
 end)
 
-hl.env('ELECTRON_OZONE_PLATFORM_HINT', 'auto')
+hl.env('ELECTRON_OZONE_PLATFORM_HINT', 'wayland')
 hl.env('HYPRCURSOR_SIZE', '24')
 hl.env('XCURSOR_SIZE', '24')
 
 hl.config {
   general = {
     allow_tearing = false,
-    border_size = 2,
-    gaps_in = 5,
-    gaps_out = 10,
+    border_size = 1,
+    gaps_in = 2,
+    gaps_out = 5,
     layout = 'master',
     resize_on_border = false,
 
@@ -53,8 +53,8 @@ hl.config {
 
     shadow = {
       enabled = true,
-      range = 40,
-      render_power = 4,
+      range = 4,
+      render_power = 3,
       color = 'rgba(' .. background .. 'ee)',
     },
 
