@@ -43,6 +43,7 @@ alpha = 100
 [templates]
 wal = { src = "wal", dst = "~/.cache/wal/wal" }
 colors = { src = "colors", dst = "~/.cache/wal/colors" }
+colors_conf = { src = "colors.conf", dst = "~/.cache/wal/colors.conf" }
 css = { src = "colors.css", dst = "~/.cache/wal/colors.css" }
 dunst = { src = "dunstrc", dst = "~/.config/dunst/dunstrc" }
 foot = { src = "colors-foot.ini", dst = "~/.cache/wal/colors-foot.ini" }
