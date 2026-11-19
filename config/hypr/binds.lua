@@ -31,8 +31,8 @@ hl.bind(Mod .. ' + SHIFT + F', hl.dsp.window.float())
 hl.bind(Mod .. ' + SHIFT + P', hl.dsp.exec_cmd '~/.local/bin/bream setbg')
 
 -- Screenshot and screen record
-hl.bind('Print', hl.dsp.exec_cmd 'uwsm app -- focal image --rofi')
-hl.bind('SHIFT + Print', hl.dsp.exec_cmd 'uwsm app -- focal video --rofi')
+hl.bind('Print', hl.dsp.exec_cmd 'focal image --menu')
+hl.bind('SHIFT + Print', hl.dsp.exec_cmd 'focal video --menu')
 
 -- Launcher
 hl.bind(Mod .. ' + C', hl.dsp.exec_cmd('uwsm app -- ' .. matrix))

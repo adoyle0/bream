@@ -9,12 +9,12 @@
         "clock"
     ],
     "modules-right": [
-        "pulseaudio",
         "cpu",
         "memory",
+        "tray",
+        "pulseaudio",
         "battery",
-        "network",
-        "tray"
+        "network"
     ],
     // modules config
     "ext/workspaces": {
@@ -26,8 +26,8 @@
         "format-bluetooth": "{volume}% {icon} {format_source}",
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-source": "   {volume}% ",
+        "format-source-muted": "   ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -45,10 +45,14 @@
     },
     "network": {
         // "interface": "wlp2*", // (Optional) To force the use of this interface
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": "{ifname} ",
-        "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "Disconnected ⚠",
+        // "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-wifi": "",
+        // "format-ethernet": "{ifname} ",
+        "format-ethernet": "",
+        // "format-linked": "{ifname} (No IP) ",
+        "format-linked": "",
+        // "format-disconnected": "Disconnected ⚠",
+        "format-disconnected": "⚠",
         "format-alt": "{ifname}: {ipaddr}"
     },
     "cpu": {
