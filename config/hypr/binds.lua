@@ -26,7 +26,7 @@ hl.bind(Mod .. ' + P', hl.dsp.window.pin())
 hl.bind(Mod .. ' + Q', hl.dsp.window.close())
 hl.bind(Mod .. ' + Escape', hl.dsp.exec_cmd 'uwsm app hyprlock')
 
-hl.bind(Mod .. ' + SHIFT + E', hl.dsp.exec_cmd 'uwsm stop') -- Exit hyprland
+hl.bind(Mod .. ' + SHIFT + E', hl.dsp.exec_cmd 'uwsm stop', { locked = true }) -- Exit hyprland
 hl.bind(Mod .. ' + SHIFT + F', hl.dsp.window.float())
 hl.bind(Mod .. ' + SHIFT + P', hl.dsp.exec_cmd '~/.local/bin/bream setbg')
 
